@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="http://aedwardg.github.io/" rel="alternate"></link><link href="http://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>http://aedwardg.github.io/</id><updated>2020-01-25T20:00:00-08:00</updated><entry><title>First Post</title><link href="http://aedwardg.github.io/first-post.html" rel="alternate"></link><published>2020-01-25T20:00:00-08:00</published><updated>2020-01-25T20:00:00-08:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-01-25:/first-post.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-01-25T20:00:00-08:00</updated><entry><title>First Post</title><link href="https://aedwardg.github.io/first-post.html" rel="alternate"></link><published>2020-01-25T20:00:00-08:00</published><updated>2020-01-25T20:00:00-08:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-01-25:/first-post.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="http://aedwardg.github.io/images/type.jpg" alt="typewriter" title="Photo by Peter Lewicki on Unsplash"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/type.jpg" alt="typewriter" title="Photo by Peter Lewicki on Unsplash"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -15,7 +15,7 @@
 Now, more than two years after my initial forray into the world of Python, I'm taking the advice of &lt;a href="https://www.fast.ai/"&gt;fast.ai&lt;/a&gt;</summary><content type="html">&lt;body&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="http://aedwardg.github.io/images/type.jpg" alt="typewriter" title="Photo by Peter Lewicki on Unsplash"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/type.jpg" alt="typewriter" title="Photo by Peter Lewicki on Unsplash"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
