@@ -1,0 +1,307 @@
+body {
+    padding-top: 70px;
+    margin-top: 30px;
+}
+
+#sidebar .list-group, #sidebar .list-group-item {
+    background-color: transparent;
+}
+
+/* for list-groups nested within a list-group-item, reset the bottom margin */
+.list-group-item > .list-group {
+    margin-bottom: 0px;
+}
+
+/* for list-group-items nested within a list-group-item, reset the bottom
+   padding of the last item, b/c the containing item has paddimg already
+ */
+.list-group-item .list-group-item:last-child {
+    padding-bottom: 0px;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.tag-0 {
+    font-size: 16pt;
+}
+
+.tag-1 {
+    font-size: 13pt;
+}
+
+.tag-2 {
+    font-size: 10pt;
+}
+
+.tag-3 {
+    font-size: 8pt;
+}
+
+.tag-4 {
+    font-size: 6pt;
+}
+
+#aboutme {
+    padding-top: 0px;
+    padding-bottom: 5px;
+    -ms-word-break: normal;
+    word-break: normal;
+}
+
+article{
+    margin-top: 10px;
+}
+
+#sidebar {
+    padding-top: 10px;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+#sidebar a {
+    color: inherit;
+}
+
+.icon-label {
+    margin-left: 10px;
+}
+
+/* Example for how to control spacing between icon and label in specific
+   lists in the sidebar. To change, override in your CUSTOM_CSS           */
+#sidebar #social i {
+    margin-right: 3px;
+}
+
+a, a:hover {
+    color: inherit;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+ color:#ed9d13;
+ background-color:transparent
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+ color:#ed9d13;
+ background-color:transparent
+}
+
+.entry-content a {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    color: #ed9d13;
+}
+
+.entry-content a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+.entry-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.entry-content figcaption, .caption {
+    font-size: small;
+    margin-bottom: 2px;
+}
+
+.summary img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.floatright, .align-right {
+    float: right;
+}
+
+.floatleft, .align-left {
+    float: left;
+}
+
+.floatcenter, .align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure.floatright, .align-right {
+    margin-left: 4px;
+}
+
+figure.floatleft, .align-left {
+    margin-right: 4px;
+}
+
+figure.floatcenter, .align-center {
+    margin-bottom: 11px;
+}
+
+.highlighttable pre {
+    /* Removes bootstrap default margin-bottom */
+    margin-bottom: 0px;
+}
+
+.highlighttable {
+    /* Adds them margin-bottom to highlightable instead of <pre> */
+    margin-bottom: 11px;
+}
+
+.highlighttable {
+    width: 100%;
+}
+
+#categories ul, #tags ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.docutils.footnote td.label {
+    display: table-cell;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    border-radius: inherit;
+}
+
+.categories-timestamp {
+    color: #AAAAAA;
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+
+.tagcloud li {
+    padding: 0px;
+}
+
+#banner {
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: scroll;
+    background-size: cover;
+    margin: 0 0 20px;
+    padding: 70px 0; /*controls padding around inner text*/
+    position: relative;
+    height: 300px;
+}
+
+#banner .copy {
+    display: inline;
+    float: left;
+    max-width: 1000px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+#banner h1 {
+    color: #fff;
+    font-family: "Roboto","HelveticaNeue-CondensedBold","Helvetica Neue CE 600 Condensed","Helvetica Neue LT Condensed","Helvetica Neue 600 Condensed","HelveticaNeue-BoldCondensed","Helvetica Neue BoldCondensed","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 60px;
+    font-stretch: condensed;
+    font-weight: 700;
+    margin: 0;
+}
+#banner .intro {
+    color: #fff;
+    font-size: 21px;
+    line-height: 1.33;
+    opacity: 0.75;
+}
+#banner .btn, #banner .intro {
+    margin-left: 4px;
+}
+
+/* Solutions for mobile and small screens  */
+@media (max-width: 650px) {
+    #banner h1{
+       font-size: 30px; /* !important;*/
+    }
+    #banner .intro{
+        font-size: 16px;
+    }
+}
+
+:target:before {
+  content:"";
+  display:block;
+  height:50px;
+  /* fixed header height*/
+
+  margin:-50px 0 0;
+  /* negative fixed header height */
+}
+
+.gap-right {
+    margin-right: 10px;
+}
+
+.gap-left {
+  margin-left: 10px;
+}
+
+code{
+    color: whitesmoke;
+    background-color: black;  }
+
+pre{
+    color: whitesmoke;
+    background-color: black;
+    scrollbar-color: dark;
+    width: 100%;
+    max-height: 800px;
+    display: inline-block;
+    overflow: auto;  }
+
+.MathJax {color: whitesmoke;}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+    margin: 15px 0; }
+    
+    table {
+      max-width: 100%;
+      max-height: 800px;
+      display: inline-block;
+      overflow: auto; 
+      padding: 0; 
+      scrollbar-color: grey #27313d; }
+      table th{
+        background-color: #27313d; }
+      table tr {
+        border-top: 1px solid #cccccc;
+        background-color: #3f495a;
+        margin: 0;
+        padding: 0; }
+        table tr:nth-child(2n) {
+          background-color: #394251; }
+          table tr th {
+          font-weight: bold;
+          border: 1px solid #cccccc;
+          text-align: left;
+          margin: 0;
+          padding: 6px 13px; }
+        table tr td {
+          border: 1px solid #cccccc;
+          text-align: left;
+          margin: 0;
+          padding: 6px 13px; }
+        table tr th :first-child, table tr td :first-child {
+          margin-top: 0; }
+        table tr th :last-child, table tr td :last-child {
+    margin-bottom: 0; }
+
