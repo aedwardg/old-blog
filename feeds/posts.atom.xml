@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-01-25T20:00:00-08:00</updated><entry><title>First Post</title><link href="https://aedwardg.github.io/first-post.html" rel="alternate"></link><published>2020-01-25T20:00:00-08:00</published><updated>2020-01-25T20:00:00-08:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-01-25:/first-post.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-03-18T15:00:00-07:00</updated><entry><title>Code, Coronavirus and Canceled School</title><link href="https://aedwardg.github.io/code-coronavirus.html" rel="alternate"></link><published>2020-03-18T15:00:00-07:00</published><updated>2020-03-18T15:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-03-18:/code-coronavirus.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/boy_math.jpg" alt="boy doing math" title="Photo by Annie Spratt on Unsplash"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Let's face it: for many of us parents, the coronavirus (COVID-19) epidemic couldn't have come at a worse time.  Not only do we have a legitimate fear of dying every time we step out of the house into a public place, we also have to face the reality that schools around the U.S. will be closed for &lt;a href="https://www.opb.org/news/article/oregon-schools-closed-coronavirus-kate-brown-april-28/"&gt;over a month&lt;/a&gt;</summary><content type="html">&lt;body&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/boy_math.jpg" alt="boy doing math" title="Photo by Annie Spratt on Unsplash"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Let's face it: for many of us parents, the coronavirus (COVID-19) epidemic couldn't have come at a worse time.  Not only do we have a legitimate fear of dying every time we step out of the house into a public place, we also have to face the reality that schools around the U.S. will be closed for &lt;a href="https://www.opb.org/news/article/oregon-schools-closed-coronavirus-kate-brown-april-28/"&gt;over a month&lt;/a&gt;...and potentially for &lt;a href="https://www.latimes.com/california/story/2020-03-17/schools-closures-mobilize-meals"&gt;the rest of the school year&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If that thought doesn't make your stomach sink to the floor, I don't know what will.&lt;/p&gt;
+&lt;p&gt;For some of us, this means we will be working from home &amp;mdash; for others, this means we may not be able to work at all for the foreseeable future.  Although there is little we can do to control what is happening around us, what we &lt;i&gt;can&lt;/i&gt; control is the type and amount of information and activities our children are exposed to during this time. Tempting as it is to turn on Netflix, Hulu, or Disney+ and walk away until our school districts finalize a plan for online education, what we do now with our kids could have a tremendous impact on their lives down the line.&lt;/p&gt;
+&lt;p&gt;Of course, keeping our children off of electronics is ideal, but it isn't always possible &amp;mdash; particularly if we are still working from home and cannot spend the weekdays conjuring up alternate entertainment.  However, this doesn't mean our children should have free rein on the Internet.  Though often forgotten, computers have incredible educational potential with the Internet turned off.&lt;/p&gt;
+&lt;p&gt;One of the advantages of knowing how to code is that you can create your own computer learning environments for your children.  In fact, you may have already done so without realizing it.  When first learning a programming language, we tend to make simple command line games to gain a grasp on logical control flow, loops, string methods, etc.  Whether it is a magic 8-ball, a choose-your-own-adventure story, battleship, or something else, you can easily set it up for some internet-free and child-friendly computer entertainment.  In my case, one of the earlier projects I worked on was a program to help my son with his multiplication, which you can find &lt;a href="https://github.com/aedwardg/times-tables"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Simple programs such as these can be lifesavers when you need to focus on your own tasks and do not want to worry about looking over your shoulder to monitor your child's internet usage.  If you know how to code, it might be worth the time to check out some of your old work for hidden gems like my &lt;code&gt;TimesTables&lt;/code&gt; program or even write up a new program over the weekend.  If coding isn't your thing, but you have young children who could use some math practice, feel free to download &lt;code&gt;TimesTables&lt;/code&gt; from my github and have your children take a crack at it.  Either way, it might buy you an hour or two of peace as you try navigate the this new, quasi-apocalyptic world while simultaneously feeding, educating and entertaining your children.  I wish you all the best of luck.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="Posts"></category><category term="thoughts"></category><category term="education"></category><category term="python"></category></entry><entry><title>First Post</title><link href="https://aedwardg.github.io/first-post.html" rel="alternate"></link><published>2020-01-25T20:00:00-08:00</published><updated>2020-01-25T20:00:00-08:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-01-25:/first-post.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://aedwardg.github.io/images/type.jpg" alt="typewriter" title="Photo by Peter Lewicki on Unsplash"&gt;&lt;/p&gt;
