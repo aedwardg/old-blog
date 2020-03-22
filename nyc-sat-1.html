@@ -1634,7 +1634,7 @@ It is worthwile to note here that there is no good way to limit the data by <cod
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Looking at the head of <code>class_size</code>, we see that we that the student-teacher ratio was not calculated.  Although we could add this back in, the ratios are schoolwide and likely combine data for lower grades. Dropping the column in this case is appropriate.</p>
+<p>Looking at the head of <code>class_size</code>, we see that the student-teacher ratio was not calculated.  Although we could add this back in, the ratios are schoolwide and likely combine data for lower grades. Dropping the column in this case is appropriate.</p>
 
 </div>
 </div>
@@ -6843,7 +6843,7 @@ dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Among the remaining columns there are many missing values that we simply cannot infer from the rest of the data.  However, there are a few more columns that we can fill in from the information we already have.  In particular, the <code>borough</code>, <code>lat</code> and <code>lon</code> columns are not to diffucult to fill in to some degree of accuracy with merely what we have in our <code>full</code> dataset.</p>
+<p>Among the remaining columns there are many missing values that we simply cannot infer from the rest of the data.  However, there are a few more columns that we can fill in from the information we already have.  In particular, the <code>borough</code>, <code>lat</code> and <code>lon</code> columns are not too diffucult to fill in to some degree of accuracy with merely what we have in our <code>full</code> dataset.</p>
 <p>For <code>borough</code> we will isolate the letter in each school's DBN and fill in the corresponding borough if it is missing.  Each of the five letters in the DBNs represent a different borough of NYC: <code>M</code> for Manhattan, <code>K</code> for Brooklyn (Kings County), <code>X</code> for Bronx, <code>Q</code> for Queens and <code>R</code> for Staten Island (Richmond County).</p>
 
 </div>
