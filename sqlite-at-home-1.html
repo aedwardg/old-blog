@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Using SQLite at Home Pt 1: CLI - Anthony's Data Blog</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="https://aedwardg.github.io/images/favicon-16x16.png" rel="icon">
+
+<link rel="canonical" href="https://aedwardg.github.io/sqlite-at-home-1.html">
+
+        <meta name="author" content="Anthony Garcia" />
+        <meta name="keywords" content="SQL,SQLite,Data Science" />
+        <meta name="description" content="This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 here). I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers. Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline. Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers." />
+
+        <meta property="og:site_name" content="Anthony's Data Blog" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Using SQLite at Home Pt 1: CLI"/>
+        <meta property="og:url" content="https://aedwardg.github.io/sqlite-at-home-1.html"/>
+        <meta property="og:description" content="This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 here). I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers. Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline. Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers."/>
+        <meta property="article:published_time" content="2020-04-14" />
+            <meta property="article:section" content="Posts" />
+            <meta property="article:tag" content="SQL" />
+            <meta property="article:tag" content="SQLite" />
+            <meta property="article:tag" content="Data Science" />
+            <meta property="article:author" content="Anthony Garcia" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://aedwardg.github.io/theme/css/bootstrap.darkly.min.css" type="text/css"/>
+    <link href="https://aedwardg.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://aedwardg.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://aedwardg.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="https://aedwardg.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Anthony's Data Blog ATOM Feed"/>
+
+        <link href="https://aedwardg.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Anthony's Data Blog Posts ATOM Feed"/>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://aedwardg.github.io/" class="navbar-brand">
+Anthony's Data Blog            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://aedwardg.github.io/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="https://aedwardg.github.io/category/posts.html">Posts</a>
+                        </li>
+                        <li >
+                            <a href="https://aedwardg.github.io/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://aedwardg.github.io/sqlite-at-home-1.html"
+                       rel="bookmark"
+                       title="Permalink to Using SQLite at Home Pt 1: CLI">
+                        Using SQLite at Home Pt 1: CLI
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-04-14T15:00:00-07:00"> Tue 14 April 2020</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://aedwardg.github.io/tag/sql.html">SQL</a>
+        /
+	<a href="https://aedwardg.github.io/tag/sqlite.html">SQLite</a>
+        /
+	<a href="https://aedwardg.github.io/tag/data-science.html">Data Science</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <body><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><i>This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 <a href="https://aedwardg.github.io/sqlite-at-home-2">here</a>).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.</i></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Using SQLite At Home &mdash; Part 1: CLI</h1>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So you've taken an online course on SQL databases and you're eager to take your new skills for a test drive on your own computer...but you have no idea where to start.  Fortunately (or unfortunately, depending on how you look at it!) you are not alone.  When I first began learning SQL a couple of years ago, I was surprised that something so easy to use on {<i>insert any online-learning resource here</i>} could be so challenging to use on my own device.  In fact, as a programming novice, I found setting up environments for general purpose languages (like Python or C++) to be far easier than setting up an intuitive and productive environment for SQL.</p>
+<p>Considering SQL is the gateway language for many data-oriented programmers, my goal is for these articles to serve as a jumping-off point for newer programmers and aspiring data scientists, and hopefully save them some time down the road.  I'll be covering how to install and interface with SQLite through the command line (here in Part 1: CLI), as well as interacting with SQLite through Python and Jupyter Notebooks, Visual Studio Code and finally DB Browser for SQLite in <a href="https://aedwardg.github.io/sqlite-at-home-2">Part 2: Better alternatives for data exploration</a>.</p>
+<div class="alert alert-block alert-info">
+Quick disclaimer: I am only providing examples for using SQLite on a Windows machine, though sites I link to will often have options for all operating systems.  This decision was made largely because of the two Macs I own, one has a shattered display and the other currently runs Ubuntu.  For all you Linux users out there, I'm going to assume you already have the technical know-how to follow along on your own operating system.  That being said, the main differences between operating systems are mostly found in the initial command-line setup.      
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Installing-SQLite">Installing SQLite<a class="anchor-link" href="#Installing-SQLite">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-Install-with-Anaconda">1. Install with Anaconda<a class="anchor-link" href="#1.-Install-with-Anaconda">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/anaconda_download_page.png" alt="Anaconda download page"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By far the easiest way to install SQLite is through <a href="https://www.anaconda.com/distribution/">Anaconda</a>.  Chances are, if you are interested in data science, you have either heard of or currently use Anaconda.  Anaconda is an open-source data science distribution that comes pre-packaged with hundreds of Python and R packages, with the option of downloading thousands more.  SQLite is automatically installed with the Individual Edition of Anaconda and is ready to use as soon as Anaconda is finished installing on your computer. What makes installing SQLite this way so convenient is that everything is already set up for you &mdash; all you have to do is download and run the installer and follow the prompts.  From there, you can run SQLite directly from Anaconda Prompt with no further setup.</p>
+<p><br></p>
+<p>Note: You can also use <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, Anaconda's barebones sister-software, but you will have to manually install SQLite using the <code>conda install</code> command in the terminal after Miniconda has finished installing.  If you have the disk space, it is much easier to simply set up the full installation of Anaconda.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.-Install-from-Direct-Download">2. Install from Direct Download<a class="anchor-link" href="#2.-Install-from-Direct-Download">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_download_page.png" alt="SQLite download page"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you would rather download SQLite on its own, simply head to the <a href="https://sqlite.org/download.html">sqlite.org download page</a> and choose the binary installer for your operating system.  For Windows, I suggest downloading the sqlite-tools bundle:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_download_win.png" alt="SQLite windows installer"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This will download a zipped folder with the .exe files you need.  Unzip the folder and you are ready to begin setting up your environment.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Choosing-a-SQLite-Environment">Choosing a SQLite Environment<a class="anchor-link" href="#Choosing-a-SQLite-Environment">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The local environment you use for running SQLite will be highly dependent on your skill level and how you intend to use your database.  If you have never used a command line application before, you may not want to interface with SQLite using the command line.  On the other hand, you will probably interact with your database differently if you are incorporating it into a program versus merely exploring it.  If you fall into the latter category, learning the command line interface (CLI) will be beneficial, if not entirely necessary.</p>
+<p>For the remainder of Part 1 and the entirety of Part 2 I will go over the four main ways I use SQLite at home, starting from the most complex (command line) and moving toward the simplest option (DB Browser):</p>
+<ol>
+<li>Command Line </li>
+<li>Python/Jupyter Notebooks</li>
+<li>Visual Studio Code</li>
+<li>DB Browser</li>
+</ol>
+<p>For each, I will walk through the set-up process, pros and cons, and a quick demonstration using the sample database found <a href="https://www.sqlitetutorial.net/sqlite-sample-database/">here</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-Command-Line">1. Command Line<a class="anchor-link" href="#1.-Command-Line">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The command line interface for SQLite can be very flexible and is a must for those looking to incorporate SQLite into their apps.  On the other hand, it's less user-friendly and has a higher learning curve for the average GUI-oriented person than the other three options I will go over.  I also feel it is the weakest option for database <i>exploration</i>, which may be the primary use case for data/BI analysts and data scientists.</p>
+<p>Thus, <b>if you have no need, desire, time, etc., to set-up and learn the command line interface for SQLite, skip this section and check out one of the other three methods discussed in <a href="https://aedwardg.github.io/sqlite-at-home-2">Part 2: Better alternatives for data exploration</a>.</b></p>
+<p>For those of you who need to learn it, love the terminal and/or <a href="https://www.vice.com/en_us/article/d3m8ga/i-stopped-using-a-computer-mouse-for-a-week?utm_campaign=sharebutton">hate using a mouse</a>, or simply want to learn a new skill during your COVID-19 quarantine, I'll do my best to cover the set-up and use of SQLite using your choice of:</p>
+<ul>
+    <li>Anaconda Prompt</li>
+    <li>Double-clicking the sqlite3.exe file</li>
+    <li>Git Bash (downloaded with Git for Windows)</li>
+    <li>Windows PowerShell</li>
+    <li>Command Prompt</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="A)-Anaconda-Prompt:-My-favorite-CLI-option">A) Anaconda Prompt: My favorite CLI option<a class="anchor-link" href="#A)-Anaconda-Prompt:-My-favorite-CLI-option">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_conda_prompt.png" alt="SQLite on Anaconda Prompt"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you've already installed Anaconda, don't even bother looking at the other Windows terminal options unless you have a <i>strong</i> preference for one of them.</p>
+<p>Seriously.</p>
+<p>If I use SQLite on the command line, 9 times out of 10 it is with Anaconda Prompt.  Why?  Because I already use Anaconda Prompt all the time on Windows, and it works right out of the box.  As soon as Anaconda is finished installing, simply open up Anaconda Prompt and type <code>sqlite3</code>.  That's it.  It will immediately start up SQLite and you can open your database from there.</p>
+<div class="alert alert-block alert-info">
+    Note: If for some reason you have Miniconda installed, it will automatically use either your native terminal (Mac and Linux users) or Command Prompt (Windows users) instead of Anaconda Prompt.  From there, simply make sure SQLite is installed (<code>conda install sqlite3</code>) and then it should run using the <code>sqlite3</code> command without additional setup.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="B)-Double-clicking-the-.exe-file:-Easiest-to-open,-most-annoying-to-use">B) Double-clicking the .exe file: Easiest to open, most annoying to use<a class="anchor-link" href="#B)-Double-clicking-the-.exe-file:-Easiest-to-open,-most-annoying-to-use">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you downloaded SQLite directly from sqlite.org, one option you have is to click on the <code>sqlite3.exe</code> file you downloaded.  If you didn't change the location when you unzipped the file, it should be saved somewhere similar to <code>Downloads &gt; sqlite-tools-win32-x86-3310100 &gt; sqlite-tools-win32-x86-3310100 &gt; sqlite3.exe</code>.  Once you double-click on this file, a command-line interface opens up for SQLite.</p>
+<p>Unfortunately, this method has a few limitations that I can't personally overlook.  First, you cannot do anything else from the same terminal window &mdash; you are limited to SQLite and that's it.  This largely defeats the purpose of using the program from the command line, in my opinion.  Second, you cannot change directories prior to starting up the SQLite CLI, since the terminal window automatically appears with SQLite started.</p>
+<p>In practice, this means that you have to use SQLite's built-in <code>.cd</code> command to navigate to your database.  Although this works fine in many circumstances, the <code>.cd</code> command handles file or folder names containing spaces poorly.</p>
+<p>For example, to navigate to a database with the path <code>C:\Users\User1\Desktop\Sample Database\chinook.db</code> you would have to use two <code>.cd</code> commands, a <code>.open</code> command and a <code>.tables</code> command.  Compared the other options (see screenshot below) this is wildly inefficient.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/cd_comparison.png" alt="CLI Navigation Comparison"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="C)-Git-Bash:-Nice-for-Bash-lovers,-less-setup-than-PowerShell-or-Command-Prompt">C) Git Bash: Nice for Bash lovers, less setup than PowerShell or Command Prompt<a class="anchor-link" href="#C)-Git-Bash:-Nice-for-Bash-lovers,-less-setup-than-PowerShell-or-Command-Prompt">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_gitbash.png" alt="SQLite in Git Bash"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you prefer Bash over Windows-style terminals, or if you already spend a lot of time on Git Bash, this may be the CLI option for you.  It works great once it is set up, and the setup is minimal compared to PowerShell or Command Prompt.  Codecademy already has an <a href="https://www.codecademy.com/courses/learn-sql/articles/what-is-sqlite">article</a> on setting SQLite up on Git Bash, as well as Mac and Linux terminals, so I won't go into a whole lot of detail.  The key is making sure to use the <code>winpty</code> command to make sure MinGW can open the executable file. A stripped down version of the setup is as follows:</p>
+<ul>
+<li>Navigate to the directory of your .exe file in Git Bash</li>
+<li>Run the command <code>winpty ./sqlite3.exe</code> to make sure SQLite works.  If it does, use <code>Ctrl</code> + <code>C</code> or the <code>.exit</code> command to exit the program.</li>
+<li>Still in the same directory, create an alias for SQLite using the following command <code>echo "alias sqlite3=\"winpty ${PWD}/sqlite3.exe\"" &gt;&gt; ~/.bashrc</code></li>
+<li>Refresh your terminal using <code>source ~/.bashrc</code></li>
+</ul>
+<p>If your alias is properly set up you should be able to run SQLite from any directory.  Go back to your home directory (<code>cd ~</code>), then use the command <code>sqlite3</code>.  If the program starts, you are good to go.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="D)-PowerShell:-Cumbersome-initial-setup,-only-use-if-you-love-PowerShell">D) PowerShell: Cumbersome initial setup, only use if you love PowerShell<a class="anchor-link" href="#D)-PowerShell:-Cumbersome-initial-setup,-only-use-if-you-love-PowerShell">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_powershell.png" alt="SQLite in PowerShell"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you gravitate toward PowerShell for command-line tasks, you are likely a Windows power user or aspiring sysadmin.  Or maybe you just really love blue.  Either way, you'll want an easy way to access SQLite through PowerShell.  Although creating a persistent alias in PowerShell (one that will last after you close the terminal) is doable, it will take a few extra steps.</p>
+<ul>
+<li><p>First, you need to decide which PowerShell profile the alias is going to be for, and whether that profile has been created yet.  If you have no idea what I am talking about, you probably do not have any profiles set up yet.  To set up a profile for the current user in the current PowerShell host application, use the following command:</p>
+<pre><code>if (!(Test-Path -Path $PROFILE)) {
+New-Item -ItemType File -Path $PROFILE -Force
+}</code></pre></li>
+<li><p>If you are curious what your profile is named, you can check using the <code>$PROFILE</code> command.  As you can see, your profile is located in a folder with the path <code>Documents\WindowsPowerShell</code></p>
+</li>
+<li><p>To edit your newly-created profile, use the <code>notepad $PROFILE</code> comand, which will open up the file in Notepad.  Any alias that you save in this file will work any time that specific user opens up PowerShell.</p>
+</li>
+<li><p>Finally, to give SQLite an alias of <code>sqlite3</code>, paste the following into the file that Notepad opened up:
+<pre><code>Set-Alias -Name "sqlite3" -value "YOUR_PATH_HERE\sqlite3.exe"</code></pre> and replace <code>YOUR_PATH_HERE</code> with the path to your SQLite executable file.</p>
+</li>
+</ul>
+<p>Now, any time you type <code>sqlite3</code> into PowerShell it will start right up.  For more information on PowerShell profiles and aliases, check out the documentation <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7">here</a> and <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias?view=powershell-7">here</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="E)-Command-Prompt-(cmd):-Consider-using-something-else?">E) Command Prompt (cmd): Consider using something else?<a class="anchor-link" href="#E)-Command-Prompt-(cmd):-Consider-using-something-else?">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://aedwardg.github.io/images/sqlite_cmd.png" alt="SQLite in CMD"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Command Prompt (or Cmd) is the OG Windows terminal &mdash; the successor of the iconic MS-DOS command-line shell.  However, despite being around for nearly 30 years, Cmd still has a surprisingly large user base and is <a href="https://devblogs.microsoft.com/commandline/rumors-of-cmds-death-have-been-greatly-exaggerated/">not going anywhere</a> anytime soon.  So, if nostalgia of the days when we used to boot up operating systems from floppy disks brings a tear to your eye, then cmd is really the only way to go.</p>
+<p>Much like PowerShell, setting a one-time alias is easy in Cmd, but ensuring it works each time you start up a terminal takes a little more work.  To set up a persistent alias for SQLite using Cmd, you'll need to modify your Cmd shortcut with a batch file using the following steps:</p>
+<ul>
+<li>First, open a new file in Notepad</li>
+<li>In the file, write a <code>DOSKEY</code> alias as follows: <pre><code>@echo off
+doskey sqlite3=YOUR_PATH_HERE\sqlite3.exe</code></pre> replacing <code>YOUR_PATH_HERE</code> with the path to your SQLite executable file.</li>
+<li>Save this file with a file extension of <code>.cmd</code>.  For example, you could save it as <code>aliases.cmd</code></li>
+<li>Go to the search bar next to your start menu, type <code>cmd</code>, and select <code>Open File Location</code></li>
+<li><p>Right-click on <code>Command Prompt.exe</code> and open the Properties.  It should look like this: <img src="images/cmd_properties.png"></p>
+</li>
+<li><p>Under the <code>Shortcut</code> tab, you should see a field called <code>Target</code> that contains the path of the <code>cmd.exe</code> executable.  Inside of that field, after the <code>cmd.exe</code> path, type <code>/k</code> followed by the path the batch file you just created, in quotes, as seen in the above screenshot.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-the-command-line-commands">Using the command line commands<a class="anchor-link" href="#Using-the-command-line-commands">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that you've set up your preferred terminal for SQLite, you can open up any database (.db) file &mdash; or create your own &mdash; and query it using normal SQL syntax.  There are several specific SQLite shell commands to know, but I won't touch on most of them in this article.  They can be found <a href="https://sqlite.org/cli.html">here</a> or by starting SQLite and using the <code>.help</code> command.  The main commands you need to get started are:</p>
+<ul>
+<li><code>.cd</code> in case you forgot to change directories before starting the program</li>
+<li><code>.open FILENAME</code> to open your database file (note: if there is not a database with that <code>FILENAME</code> at that path, SQLite will create a new database there for you)</li>
+<li><code>.schema</code> to view the schema of each table in your database</li>
+<li><code>.tables</code> to see a list of the tables in your database</li>
+<li><code>.headers on|off</code> to show or hide headers in your query outputs</li>
+<li><code>.mode MODE</code> to change the output format of your queries &mdash; there are eight different modes, which you can find <a href="https://sqlite.org/cli.html#changing_output_formats">here</a></li>
+<li><code>.exit</code> to exit SQLite and return to your regular terminal environment</li>
+</ul>
+<p>And that's it!  You're ready to tackle any database, CSV file or other data source that SQLite can load.  Take some time to get used to the commands and it will be second nature in no time.  Of course, if you would like to explore your data in a more user-friendly and visually appealing way, check out <a href="https://aedwardg.github.io/sqlite-at-home-2">Using SQLite at Home Part 2</a>, where I go over my three preferred ways to use SQLite in data exploration.</p>
+
+</div>
+</div>
+</div>
+ 
+
+</body>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Sites</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.anthonysdata.com"><i class="fa fa-home fa-lg"></i> anthonysdata.com</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/anthony-g-971ba064/"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://public.tableau.com/profile/anthony.garcia5831#!/"><i class="fa fa-tableau-square fa-lg"></i> Tableau Public</a></li>
+    <li class="list-group-item"><a href="https://github.com/aedwardg"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://medium.com/"><i class="fa fa-medium fa-lg"></i> Medium</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Technologies</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://seaborn.pydata.org/" target="_blank">Seaborn</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://pandas.pydata.org/" target="_blank">Pandas</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://numpy.org/" target="_blank">Numpy</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.scipy.org/" target="_blank">SciPy</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://pingouin-stats.org/" target="_blank">Pingouin</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.sqlite.org/fileformat2.html" target="_blank">SQLite</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.mysql.com/" target="_blank">MySQL</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://julialang.org/" target="_blank">Julia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 Anthony Garcia
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://aedwardg.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://aedwardg.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://aedwardg.github.io/theme/js/respond.min.js"></script>
+
+
+    <script src="https://aedwardg.github.io/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>
