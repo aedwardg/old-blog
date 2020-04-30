@@ -2,10 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-04-14T15:00:00-07:00</updated><entry><title>Using SQLite at Home Pt 1: CLI</title><link href="https://aedwardg.github.io/sqlite-at-home-1.html" rel="alternate"></link><published>2020-04-14T15:00:00-07:00</published><updated>2020-04-14T15:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-04-14:/sqlite-at-home-1.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;i&gt;This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 &lt;a href="https://aedwardg.github.io/sqlite-at-home-2"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;</summary><content type="html">&lt;body&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;i&gt;This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 &lt;a href="https://aedwardg.github.io/sqlite-at-home-2"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_main.png" alt="Example SQLite CLI"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -13,7 +10,18 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;i&gt;This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 &lt;a href="https://aedwardg.github.io/sqlite-at-home-2"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;</summary><content type="html">&lt;body&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_main.png" alt="Example SQLite CLI"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;i&gt;This post is the first in a two-part series on setting up and using SQLite at home (read Part 2 &lt;a href="https://aedwardg.github.io/sqlite-at-home-2"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
