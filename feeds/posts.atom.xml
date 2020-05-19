@@ -2290,7 +2290,7 @@ Quick disclaimer: I am only providing examples for using SQLite on a Windows mac
 &lt;p&gt;Seriously.&lt;/p&gt;
 &lt;p&gt;If I use SQLite on the command line, 9 times out of 10 it is with Anaconda Prompt.  Why?  Because I already use Anaconda Prompt all the time on Windows, and it works right out of the box.  As soon as Anaconda is finished installing, simply open up Anaconda Prompt and type &lt;code&gt;sqlite3&lt;/code&gt;.  That's it.  It will immediately start up SQLite and you can open your database from there.&lt;/p&gt;
 &lt;div class="alert alert-block alert-info"&gt;
-    Note: If for some reason you have Miniconda installed, it will automatically use either your native terminal (Mac and Linux users) or Command Prompt (Windows users) instead of Anaconda Prompt.  From there, simply make sure SQLite is installed (&lt;code&gt;conda install sqlite3&lt;/code&gt;) and then it should run using the &lt;code&gt;sqlite3&lt;/code&gt; command without additional setup.
+    Note: If for some reason you have Miniconda installed, it may automatically use either your native terminal (Mac and Linux users) or Command Prompt (Windows users) instead of Anaconda Prompt.  From there, simply make sure SQLite is installed (&lt;code&gt;conda install sqlite3&lt;/code&gt;) and then it should run using the &lt;code&gt;sqlite3&lt;/code&gt; command without additional setup.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
