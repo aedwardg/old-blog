@@ -1,5 +1,2127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-04-14T15:00:00-07:00</updated><entry><title>Using SQLite at Home Pt 1: CLI</title><link href="https://aedwardg.github.io/sqlite-at-home-1.html" rel="alternate"></link><published>2020-04-14T15:00:00-07:00</published><updated>2020-04-14T15:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-04-14:/sqlite-at-home-1.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-05-19T01:00:00-07:00</updated><entry><title>Using SQLite at Home Pt 2: Better alternatives for data exploration</title><link href="https://aedwardg.github.io/sqlite-at-home-2.html" rel="alternate"></link><published>2020-05-19T01:00:00-07:00</published><updated>2020-05-19T01:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-05-19:/sqlite-at-home-2.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_plot.png" alt="DB4S Plot"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;i&gt;This post is the second in a two-part series on setting up and using SQLite at home (read Part 1 &lt;a href="https://aedwardg.github.io/sqlite-at-home-1"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;</summary><content type="html">&lt;body&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_plot.png" alt="DB4S Plot"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;i&gt;This post is the second in a two-part series on setting up and using SQLite at home (read Part 1 &lt;a href="https://aedwardg.github.io/sqlite-at-home-1"&gt;here&lt;/a&gt;).  I was inspired to address this topic due to the number of posts on the Codecademy Forums regarding using SQLite locally on their own computers.  Although I feel Codecademy is a great way to get started learning a new programming language, one of their weak points has always been transitioning their learners to coding offline.  Hopefully these posts will serve as a definitive reference for getting beginners set up to explore and interact with SQLite databases on their own computers.&lt;/i&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1&gt;Using SQLite At Home &amp;mdash; Part 2: Better alternatives for  data exploration&lt;/h1&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;In my previous post, &lt;a href="https://aedwardg.github.io/sqlite-at-home-1.html"&gt;Part 1: CLI&lt;/a&gt;, I covered installing SQLite and setting it up for use on the command line.  However, as I mentioned in that post, the command line is only one of the four ways I tend to interact with SQLite on my own computer &amp;mdash; and it is the option I am least likely to go for if I need to take a close look at a dataset.  In fact, I really only use the SQLite CLI if I am creating a database/table or if I am using it in a program or app.  If my task involves data exploration to any degree, I find the CLI less efficient and frankly, less visually appealing.  In this post I'll dive into the other three methods I use to interact with SQLite locally and why I believe they are more intuitive to use, easier on the eyes and provide better workflow integration than the command line.&lt;/p&gt;
+&lt;p&gt;To skip directly to a specific section click the link below:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://aedwardg.github.io/sqlite-at-home-1.html#1.-Command-Line"&gt;Command Line&lt;/a&gt; (previous article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aedwardg.github.io/sqlite-at-home-2.html#2.-Python/Jupyter-Notebooks"&gt;Python/Jupyter Notebooks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aedwardg.github.io/sqlite-at-home-2.html#3.-Visual-Studio-Code"&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aedwardg.github.io/sqlite-at-home-2.html#4.-DB-Browser"&gt;DB Browser&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="2.-Python/Pandas/Jupyter-Notebooks:-The-data-science-workflow"&gt;2. Python/Pandas/Jupyter Notebooks: The data science workflow&lt;a class="anchor-link" href="#2.-Python/Pandas/Jupyter-Notebooks:-The-data-science-workflow"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sql_top_ten.png" alt="SQLite in Jupyter"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Jupyter Notebooks are practically synonymous with with data science, and for good reason &amp;mdash; they make it simple to run small chunks of code in any order and see the results in-line.  This makes Jupyter Notebooks perfect for exploratory data analysis in Python, but many people don't realize Notebooks provide an excellent interface for querying a SQL database as well.  The key reason is Jupyter's default HTML rendering of Pandas DataFrames.  By returning your SQL query result as a DataFrame, you get all the information in a clean, readable format without ever having to leave your Python environment.&lt;/p&gt;
+&lt;p&gt;This is my preferred method of exploring a SQLite database when I need to use the data as part of a larger Python data analysis project.  It fits seamlessly into the rest of my project's workflow, and allows me to concentrate on the task at hand instead of having to jump back and forth between multiple windows.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="Using-SQLite-with-Python/Jupyter-Notebooks"&gt;Using SQLite with Python/Jupyter Notebooks&lt;a class="anchor-link" href="#Using-SQLite-with-Python/Jupyter-Notebooks"&gt;&amp;#182;&lt;/a&gt;&lt;/h4&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If you don't have Jupyter installed yet, download &lt;a href="https://www.anaconda.com/distribution/"&gt;Anaconda&lt;/a&gt; or follow the &lt;a href="https://jupyter.org/install"&gt;installation instructions&lt;/a&gt; on the Jupyter website.  I highly recommend installing via Anaconda, as it comes with &lt;code&gt;jupyter&lt;/code&gt;, &lt;code&gt;sqlite3&lt;/code&gt; and &lt;code&gt;pandas&lt;/code&gt; by default.&lt;/p&gt;
+&lt;p&gt;Once you have a new Jupyter Notebook open, you can start using SQLite with Python by importing &lt;code&gt;sqlite3&lt;/code&gt; and &lt;code&gt;pandas&lt;/code&gt; in the first cell of your notebook.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Technically, you can use SQLite in your notebook without Pandas, thanks to Python's standard &lt;code&gt;sqlite3&lt;/code&gt; module.  If you wanted to do so, you might start with the code below, which does the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creates a connection to the database (as in my last article, I am using the database found &lt;a href="https://www.sqlitetutorial.net/sqlite-sample-database/"&gt;here&lt;/a&gt; for demonstration purposes)&lt;/li&gt;
+&lt;li&gt;Creates a cursor;&lt;/li&gt;
+&lt;li&gt;Executes a query to find the tables in our database; and &lt;/li&gt;
+&lt;li&gt;Prints the names of those tables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chinook.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Note: I prefer using multi-line strings for query readability; compare with the string below: &lt;/span&gt;
+&lt;span class="c1"&gt;# &amp;#39;SELECT name FROM sqlite_master WHERE type in (&amp;quot;table&amp;quot;,&amp;quot;view&amp;quot;) AND name NOT LIKE &amp;quot;sqlite_%&amp;quot; ORDER BY 1;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;SELECT name &lt;/span&gt;
+&lt;span class="s1"&gt;             FROM sqlite_master &lt;/span&gt;
+&lt;span class="s1"&gt;             WHERE type IN (&amp;quot;table&amp;quot;,&amp;quot;view&amp;quot;) AND name NOT LIKE &amp;quot;sqlite_%&amp;quot;&lt;/span&gt;
+&lt;span class="s1"&gt;             ORDER BY 1;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[(&amp;#39;albums&amp;#39;,), (&amp;#39;artists&amp;#39;,), (&amp;#39;customers&amp;#39;,), (&amp;#39;employees&amp;#39;,), (&amp;#39;genres&amp;#39;,), (&amp;#39;invoice_items&amp;#39;,), (&amp;#39;invoices&amp;#39;,), (&amp;#39;media_types&amp;#39;,), (&amp;#39;playlist_track&amp;#39;,), (&amp;#39;playlists&amp;#39;,), (&amp;#39;tracks&amp;#39;,)]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;In the printed output we are able to see all the table names, but the result isn't very visually appealing.  While you might be able to overlook it for this query, what if you want to check out the schema for all of your tables?&lt;/p&gt;
+&lt;p&gt;The cell below shows the normal Python output of a query for the schema of all the tables in our database.  As you can see, it is not only ugly, it is fairly difficult to read.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;SELECT sql &lt;/span&gt;
+&lt;span class="s1"&gt;             FROM sqlite_master&lt;/span&gt;
+&lt;span class="s1"&gt;             ORDER BY tbl_name, type DESC, name;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;[(&amp;#39;CREATE TABLE &amp;#34;albums&amp;#34;\r\n(\r\n    [AlbumId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Title] NVARCHAR(160)  NOT NULL,\r\n    [ArtistId] INTEGER  NOT NULL,\r\n    FOREIGN KEY ([ArtistId]) REFERENCES &amp;#34;artists&amp;#34; ([ArtistId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_AlbumArtistId] ON &amp;#34;albums&amp;#34; ([ArtistId])&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;artists&amp;#34;\r\n(\r\n    [ArtistId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Name] NVARCHAR(120)\r\n)&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;customers&amp;#34;\r\n(\r\n    [CustomerId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [FirstName] NVARCHAR(40)  NOT NULL,\r\n    [LastName] NVARCHAR(20)  NOT NULL,\r\n    [Company] NVARCHAR(80),\r\n    [Address] NVARCHAR(70),\r\n    [City] NVARCHAR(40),\r\n    [State] NVARCHAR(40),\r\n    [Country] NVARCHAR(40),\r\n    [PostalCode] NVARCHAR(10),\r\n    [Phone] NVARCHAR(24),\r\n    [Fax] NVARCHAR(24),\r\n    [Email] NVARCHAR(60)  NOT NULL,\r\n    [SupportRepId] INTEGER,\r\n    FOREIGN KEY ([SupportRepId]) REFERENCES &amp;#34;employees&amp;#34; ([EmployeeId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_CustomerSupportRepId] ON &amp;#34;customers&amp;#34; ([SupportRepId])&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;employees&amp;#34;\r\n(\r\n    [EmployeeId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [LastName] NVARCHAR(20)  NOT NULL,\r\n    [FirstName] NVARCHAR(20)  NOT NULL,\r\n    [Title] NVARCHAR(30),\r\n    [ReportsTo] INTEGER,\r\n    [BirthDate] DATETIME,\r\n    [HireDate] DATETIME,\r\n    [Address] NVARCHAR(70),\r\n    [City] NVARCHAR(40),\r\n    [State] NVARCHAR(40),\r\n    [Country] NVARCHAR(40),\r\n    [PostalCode] NVARCHAR(10),\r\n    [Phone] NVARCHAR(24),\r\n    [Fax] NVARCHAR(24),\r\n    [Email] NVARCHAR(60),\r\n    FOREIGN KEY ([ReportsTo]) REFERENCES &amp;#34;employees&amp;#34; ([EmployeeId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_EmployeeReportsTo] ON &amp;#34;employees&amp;#34; ([ReportsTo])&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;genres&amp;#34;\r\n(\r\n    [GenreId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Name] NVARCHAR(120)\r\n)&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;invoice_items&amp;#34;\r\n(\r\n    [InvoiceLineId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [InvoiceId] INTEGER  NOT NULL,\r\n    [TrackId] INTEGER  NOT NULL,\r\n    [UnitPrice] NUMERIC(10,2)  NOT NULL,\r\n    [Quantity] INTEGER  NOT NULL,\r\n    FOREIGN KEY ([InvoiceId]) REFERENCES &amp;#34;invoices&amp;#34; ([InvoiceId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n    FOREIGN KEY ([TrackId]) REFERENCES &amp;#34;tracks&amp;#34; ([TrackId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_InvoiceLineInvoiceId] ON &amp;#34;invoice_items&amp;#34; ([InvoiceId])&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_InvoiceLineTrackId] ON &amp;#34;invoice_items&amp;#34; ([TrackId])&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;invoices&amp;#34;\r\n(\r\n    [InvoiceId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [CustomerId] INTEGER  NOT NULL,\r\n    [InvoiceDate] DATETIME  NOT NULL,\r\n    [BillingAddress] NVARCHAR(70),\r\n    [BillingCity] NVARCHAR(40),\r\n    [BillingState] NVARCHAR(40),\r\n    [BillingCountry] NVARCHAR(40),\r\n    [BillingPostalCode] NVARCHAR(10),\r\n    [Total] NUMERIC(10,2)  NOT NULL,\r\n    FOREIGN KEY ([CustomerId]) REFERENCES &amp;#34;customers&amp;#34; ([CustomerId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_InvoiceCustomerId] ON &amp;#34;invoices&amp;#34; ([CustomerId])&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;media_types&amp;#34;\r\n(\r\n    [MediaTypeId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Name] NVARCHAR(120)\r\n)&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;playlist_track&amp;#34;\r\n(\r\n    [PlaylistId] INTEGER  NOT NULL,\r\n    [TrackId] INTEGER  NOT NULL,\r\n    CONSTRAINT [PK_PlaylistTrack] PRIMARY KEY  ([PlaylistId], [TrackId]),\r\n    FOREIGN KEY ([PlaylistId]) REFERENCES &amp;#34;playlists&amp;#34; ([PlaylistId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n    FOREIGN KEY ([TrackId]) REFERENCES &amp;#34;tracks&amp;#34; ([TrackId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_PlaylistTrackTrackId] ON &amp;#34;playlist_track&amp;#34; ([TrackId])&amp;#39;,), (None,), (&amp;#39;CREATE TABLE &amp;#34;playlists&amp;#34;\r\n(\r\n    [PlaylistId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Name] NVARCHAR(120)\r\n)&amp;#39;,), (&amp;#39;CREATE TABLE sqlite_sequence(name,seq)&amp;#39;,), (&amp;#39;CREATE TABLE sqlite_stat1(tbl,idx,stat)&amp;#39;,), (&amp;#39;CREATE TABLE &amp;#34;tracks&amp;#34;\r\n(\r\n    [TrackId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\r\n    [Name] NVARCHAR(200)  NOT NULL,\r\n    [AlbumId] INTEGER,\r\n    [MediaTypeId] INTEGER  NOT NULL,\r\n    [GenreId] INTEGER,\r\n    [Composer] NVARCHAR(220),\r\n    [Milliseconds] INTEGER  NOT NULL,\r\n    [Bytes] INTEGER,\r\n    [UnitPrice] NUMERIC(10,2)  NOT NULL,\r\n    FOREIGN KEY ([AlbumId]) REFERENCES &amp;#34;albums&amp;#34; ([AlbumId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n    FOREIGN KEY ([GenreId]) REFERENCES &amp;#34;genres&amp;#34; ([GenreId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n    FOREIGN KEY ([MediaTypeId]) REFERENCES &amp;#34;media_types&amp;#34; ([MediaTypeId]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_TrackAlbumId] ON &amp;#34;tracks&amp;#34; ([AlbumId])&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_TrackGenreId] ON &amp;#34;tracks&amp;#34; ([GenreId])&amp;#39;,), (&amp;#39;CREATE INDEX [IFK_TrackMediaTypeId] ON &amp;#34;tracks&amp;#34; ([MediaTypeId])&amp;#39;,)]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Of course, we can always use &lt;a href="https://www.sqlite.org/pragma.html#pragma_table_info"&gt;PRAGMA functions&lt;/a&gt; to check out the table info.  This option (using the code below) is significantly easier to read, but it's still no better than using the CLI.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;meta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PRAGMA table_info(&amp;#39;albums&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;(0, &amp;#39;AlbumId&amp;#39;, &amp;#39;INTEGER&amp;#39;, 1, None, 1)
+(1, &amp;#39;Title&amp;#39;, &amp;#39;NVARCHAR(160)&amp;#39;, 1, None, 0)
+(2, &amp;#39;ArtistId&amp;#39;, &amp;#39;INTEGER&amp;#39;, 1, None, 0)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This is where Pandas comes in to save the day.  Because Pandas comes with a &lt;code&gt;.read_sql()&lt;/code&gt; method, we can quickly whip up a function that runs a SQL query on our database and returns the result as a Pandas Dataframe.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# conn = sqlite3.connect(&amp;#39;chinook.db&amp;#39;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;                             
+        &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_sql&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If we run our table name query again using Pandas, we have a slick-looking table with all the table names in a single column rather than in a list of tuples.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;table_names&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;SELECT name&lt;/span&gt;
+&lt;span class="s1"&gt;                           FROM sqlite_master &lt;/span&gt;
+&lt;span class="s1"&gt;                           WHERE type IN (&amp;quot;table&amp;quot;,&amp;quot;view&amp;quot;) AND name NOT LIKE &amp;quot;sqlite_%&amp;quot;&lt;/span&gt;
+&lt;span class="s1"&gt;                           ORDER BY 1;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;table_names&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;albums&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;artists&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;customers&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;employees&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;genres&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;invoice_items&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;invoices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;media_types&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;playlist_track&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;playlists&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;tracks&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;What about our query for all the table schemas?  Unfortunately this weakness still plagues us, even when enlisting the help of Pandas.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[7]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;SELECT sql &lt;/span&gt;
+&lt;span class="s1"&gt;             FROM sqlite_master&lt;/span&gt;
+&lt;span class="s1"&gt;             ORDER BY tbl_name, type DESC, name;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;sql&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "albums"\r\n(\r\n    [AlbumId] IN...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_AlbumArtistId] ON "albums" (...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "artists"\r\n(\r\n    [ArtistId] ...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "customers"\r\n(\r\n    [Customer...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_CustomerSupportRepId] ON "cu...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "employees"\r\n(\r\n    [Employee...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_EmployeeReportsTo] ON "emplo...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "genres"\r\n(\r\n    [GenreId] IN...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "invoice_items"\r\n(\r\n    [Invo...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_InvoiceLineInvoiceId] ON "in...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_InvoiceLineTrackId] ON "invo...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "invoices"\r\n(\r\n    [InvoiceId...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_InvoiceCustomerId] ON "invoi...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "media_types"\r\n(\r\n    [MediaT...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "playlist_track"\r\n(\r\n    [Pla...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;15&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_PlaylistTrackTrackId] ON "pl...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;td&gt;None&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;17&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "playlists"\r\n(\r\n    [Playlist...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE sqlite_sequence(name,seq)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;19&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE sqlite_stat1(tbl,idx,stat)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;20&lt;/th&gt;
+      &lt;td&gt;CREATE TABLE "tracks"\r\n(\r\n    [TrackId] IN...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;21&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_TrackAlbumId] ON "tracks" ([...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;22&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_TrackGenreId] ON "tracks" ([...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;23&lt;/th&gt;
+      &lt;td&gt;CREATE INDEX [IFK_TrackMediaTypeId] ON "tracks...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;What we can do, however, is quickly create a dictionary containing DataFrames of each table's schema &amp;mdash; which is the next best thing.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[8]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;schema&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;table_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;schema&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PRAGMA table_info(&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;)&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Once our &lt;code&gt;schema&lt;/code&gt; dictionary is created, we can examine the table info for any table in our database with ease:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[9]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;schema&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tracks&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;cid&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;type&lt;/th&gt;
+      &lt;th&gt;notnull&lt;/th&gt;
+      &lt;th&gt;dflt_value&lt;/th&gt;
+      &lt;th&gt;pk&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;TrackId&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Name&lt;/td&gt;
+      &lt;td&gt;NVARCHAR(200)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;AlbumId&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;MediaTypeId&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;GenreId&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Composer&lt;/td&gt;
+      &lt;td&gt;NVARCHAR(220)&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Milliseconds&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Bytes&lt;/td&gt;
+      &lt;td&gt;INTEGER&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;UnitPrice&lt;/td&gt;
+      &lt;td&gt;NUMERIC(10,2)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;One aspect I really enjoy about interacting with SQLite in this fashion is the ability to assign both queries and their results to variables for later use.  By leveraging this, my code feels like Python from beginning to end rather than a disjointed Python/SQL hybrid.&lt;/p&gt;
+&lt;p&gt;For example, let's say I want to create a DataFrame of all the tracks whose names begin with the letter "a".  I can save my query as a string, &lt;code&gt;a_tracks_query&lt;/code&gt;, and also save the resulting DataFrame as its own variable, &lt;code&gt;a_tracks&lt;/code&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a_tracks_query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;SELECT *&lt;/span&gt;
+&lt;span class="s1"&gt;                    FROM tracks&lt;/span&gt;
+&lt;span class="s1"&gt;                    WHERE Name LIKE &amp;quot;a%&amp;quot;&lt;/span&gt;
+&lt;span class="s1"&gt;                    ORDER BY Name;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;a_tracks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a_tracks_query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a_tracks&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;TrackId&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;AlbumId&lt;/th&gt;
+      &lt;th&gt;MediaTypeId&lt;/th&gt;
+      &lt;th&gt;GenreId&lt;/th&gt;
+      &lt;th&gt;Composer&lt;/th&gt;
+      &lt;th&gt;Milliseconds&lt;/th&gt;
+      &lt;th&gt;Bytes&lt;/th&gt;
+      &lt;th&gt;UnitPrice&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;236&lt;/td&gt;
+      &lt;td&gt;A Banda&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;132493&lt;/td&gt;
+      &lt;td&gt;4349539&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;3118&lt;/td&gt;
+      &lt;td&gt;A Bencao E Outros&lt;/td&gt;
+      &lt;td&gt;247&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;421093&lt;/td&gt;
+      &lt;td&gt;14234427&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;3209&lt;/td&gt;
+      &lt;td&gt;A Benihana Christmas, Pts. 1 &amp;amp; 2&lt;/td&gt;
+      &lt;td&gt;251&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;2519436&lt;/td&gt;
+      &lt;td&gt;515301752&lt;/td&gt;
+      &lt;td&gt;1.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;873&lt;/td&gt;
+      &lt;td&gt;A Carta&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Djavan - Gabriel, O Pensador&lt;/td&gt;
+      &lt;td&gt;347297&lt;/td&gt;
+      &lt;td&gt;11493463&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;793&lt;/td&gt;
+      &lt;td&gt;A Castle Full Of Rascals&lt;/td&gt;
+      &lt;td&gt;63&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Ian Gillan, Roger Glover, Jon Lord, Steve Mors...&lt;/td&gt;
+      &lt;td&gt;311693&lt;/td&gt;
+      &lt;td&gt;10159566&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;298&lt;/td&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+      &lt;td&gt;26&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Bernardo Vilhena/Da Gama/Lazão&lt;/td&gt;
+      &lt;td&gt;231392&lt;/td&gt;
+      &lt;td&gt;7663348&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;311&lt;/td&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Bernardo Vilhena/Da Gama/Lazao&lt;/td&gt;
+      &lt;td&gt;273031&lt;/td&gt;
+      &lt;td&gt;9142937&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;1731&lt;/td&gt;
+      &lt;td&gt;A Cura&lt;/td&gt;
+      &lt;td&gt;142&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;280920&lt;/td&gt;
+      &lt;td&gt;9260588&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;2833&lt;/td&gt;
+      &lt;td&gt;A Day In the Life&lt;/td&gt;
+      &lt;td&gt;227&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;2620245&lt;/td&gt;
+      &lt;td&gt;462818231&lt;/td&gt;
+      &lt;td&gt;1.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;2129&lt;/td&gt;
+      &lt;td&gt;A Different Kind Of Blue&lt;/td&gt;
+      &lt;td&gt;176&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Brian Eno, Bono, Adam Clayton, The Edge &amp;amp; Larr...&lt;/td&gt;
+      &lt;td&gt;120816&lt;/td&gt;
+      &lt;td&gt;3884133&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;533&lt;/td&gt;
+      &lt;td&gt;A E O Z&lt;/td&gt;
+      &lt;td&gt;42&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Mutantes&lt;/td&gt;
+      &lt;td&gt;518556&lt;/td&gt;
+      &lt;td&gt;16873005&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;290&lt;/td&gt;
+      &lt;td&gt;A Estrada&lt;/td&gt;
+      &lt;td&gt;26&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Bino Farias/Da Gama/Lazão/Toni Garrido&lt;/td&gt;
+      &lt;td&gt;248842&lt;/td&gt;
+      &lt;td&gt;8275673&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;302&lt;/td&gt;
+      &lt;td&gt;A Estrada&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Da Gama/Lazao/Toni Garrido&lt;/td&gt;
+      &lt;td&gt;282174&lt;/td&gt;
+      &lt;td&gt;9344477&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;2771&lt;/td&gt;
+      &lt;td&gt;A Festa Do Santo Reis&lt;/td&gt;
+      &lt;td&gt;223&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;159791&lt;/td&gt;
+      &lt;td&gt;5204995&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;419&lt;/td&gt;
+      &lt;td&gt;A Kind Of Magic&lt;/td&gt;
+      &lt;td&gt;36&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Roger Taylor&lt;/td&gt;
+      &lt;td&gt;262608&lt;/td&gt;
+      &lt;td&gt;8689618&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;15&lt;/th&gt;
+      &lt;td&gt;220&lt;/td&gt;
+      &lt;td&gt;A Luz De Tieta&lt;/td&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Caetano Veloso&lt;/td&gt;
+      &lt;td&gt;251742&lt;/td&gt;
+      &lt;td&gt;8507446&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;td&gt;2970&lt;/td&gt;
+      &lt;td&gt;A Man And A Woman&lt;/td&gt;
+      &lt;td&gt;235&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Adam Clayton, Bono, Larry Mullen &amp;amp; The Edge&lt;/td&gt;
+      &lt;td&gt;270132&lt;/td&gt;
+      &lt;td&gt;8938285&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;17&lt;/th&gt;
+      &lt;td&gt;2825&lt;/td&gt;
+      &lt;td&gt;A Measure of Salvation&lt;/td&gt;
+      &lt;td&gt;227&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;2563938&lt;/td&gt;
+      &lt;td&gt;489715554&lt;/td&gt;
+      &lt;td&gt;1.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;2792&lt;/td&gt;
+      &lt;td&gt;A Melhor Forma&lt;/td&gt;
+      &lt;td&gt;224&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Titãs&lt;/td&gt;
+      &lt;td&gt;191503&lt;/td&gt;
+      &lt;td&gt;6349938&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;19&lt;/th&gt;
+      &lt;td&gt;1767&lt;/td&gt;
+      &lt;td&gt;A Menina Dança&lt;/td&gt;
+      &lt;td&gt;145&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Caetano Veloso e Gilberto Gil&lt;/td&gt;
+      &lt;td&gt;129410&lt;/td&gt;
+      &lt;td&gt;4326918&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;20&lt;/th&gt;
+      &lt;td&gt;3481&lt;/td&gt;
+      &lt;td&gt;A Midsummer Night's Dream, Op.61 Incidental Mu...&lt;/td&gt;
+      &lt;td&gt;326&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;24&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;387826&lt;/td&gt;
+      &lt;td&gt;6497867&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;21&lt;/th&gt;
+      &lt;td&gt;1967&lt;/td&gt;
+      &lt;td&gt;A Moça e a Chuva&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;Mônica Marianno&lt;/td&gt;
+      &lt;td&gt;274625&lt;/td&gt;
+      &lt;td&gt;8929357&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;22&lt;/th&gt;
+      &lt;td&gt;2438&lt;/td&gt;
+      &lt;td&gt;A New Flame&lt;/td&gt;
+      &lt;td&gt;141&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Mick Hucknall&lt;/td&gt;
+      &lt;td&gt;237662&lt;/td&gt;
+      &lt;td&gt;7822875&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;23&lt;/th&gt;
+      &lt;td&gt;1917&lt;/td&gt;
+      &lt;td&gt;A Noite Do Meu Bem&lt;/td&gt;
+      &lt;td&gt;158&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Dolores Duran&lt;/td&gt;
+      &lt;td&gt;220081&lt;/td&gt;
+      &lt;td&gt;7125225&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;24&lt;/th&gt;
+      &lt;td&gt;1105&lt;/td&gt;
+      &lt;td&gt;A Novidade&lt;/td&gt;
+      &lt;td&gt;73&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Gilberto Gil&lt;/td&gt;
+      &lt;td&gt;324780&lt;/td&gt;
+      &lt;td&gt;10765600&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;25&lt;/th&gt;
+      &lt;td&gt;1099&lt;/td&gt;
+      &lt;td&gt;A Novidade (Live)&lt;/td&gt;
+      &lt;td&gt;86&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;316969&lt;/td&gt;
+      &lt;td&gt;10508000&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;26&lt;/th&gt;
+      &lt;td&gt;377&lt;/td&gt;
+      &lt;td&gt;A Paz&lt;/td&gt;
+      &lt;td&gt;33&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Donato/Gilberto Gil&lt;/td&gt;
+      &lt;td&gt;263183&lt;/td&gt;
+      &lt;td&gt;8619173&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;27&lt;/th&gt;
+      &lt;td&gt;1111&lt;/td&gt;
+      &lt;td&gt;A Paz&lt;/td&gt;
+      &lt;td&gt;73&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Gilberto Gil&lt;/td&gt;
+      &lt;td&gt;293093&lt;/td&gt;
+      &lt;td&gt;9593064&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;28&lt;/th&gt;
+      &lt;td&gt;2962&lt;/td&gt;
+      &lt;td&gt;A Room At The Heartbreak Hotel&lt;/td&gt;
+      &lt;td&gt;234&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;U2&lt;/td&gt;
+      &lt;td&gt;274546&lt;/td&gt;
+      &lt;td&gt;9015416&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;29&lt;/th&gt;
+      &lt;td&gt;596&lt;/td&gt;
+      &lt;td&gt;A Rua&lt;/td&gt;
+      &lt;td&gt;47&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;238027&lt;/td&gt;
+      &lt;td&gt;7930264&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;169&lt;/th&gt;
+      &lt;td&gt;887&lt;/td&gt;
+      &lt;td&gt;As Aparências Enganam&lt;/td&gt;
+      &lt;td&gt;71&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;247379&lt;/td&gt;
+      &lt;td&gt;8014346&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;170&lt;/th&gt;
+      &lt;td&gt;1521&lt;/td&gt;
+      &lt;td&gt;As Dores do Mundo&lt;/td&gt;
+      &lt;td&gt;123&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Hyldon&lt;/td&gt;
+      &lt;td&gt;255477&lt;/td&gt;
+      &lt;td&gt;8537092&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;171&lt;/th&gt;
+      &lt;td&gt;1084&lt;/td&gt;
+      &lt;td&gt;As Pegadas Do Amor&lt;/td&gt;
+      &lt;td&gt;85&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Gilberto Gil&lt;/td&gt;
+      &lt;td&gt;209136&lt;/td&gt;
+      &lt;td&gt;6899062&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;172&lt;/th&gt;
+      &lt;td&gt;2348&lt;/td&gt;
+      &lt;td&gt;As Profecias&lt;/td&gt;
+      &lt;td&gt;192&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;232515&lt;/td&gt;
+      &lt;td&gt;7657732&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;173&lt;/th&gt;
+      &lt;td&gt;671&lt;/td&gt;
+      &lt;td&gt;As Rosas Não Falam (Beth Carvalho)&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;116767&lt;/td&gt;
+      &lt;td&gt;3836641&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;174&lt;/th&gt;
+      &lt;td&gt;2668&lt;/td&gt;
+      &lt;td&gt;As Tears Go By&lt;/td&gt;
+      &lt;td&gt;216&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Jagger/Richards/Oldham&lt;/td&gt;
+      &lt;td&gt;164284&lt;/td&gt;
+      &lt;td&gt;5357350&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;175&lt;/th&gt;
+      &lt;td&gt;2424&lt;/td&gt;
+      &lt;td&gt;As The Years Go by&lt;/td&gt;
+      &lt;td&gt;197&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Albert King&lt;/td&gt;
+      &lt;td&gt;233064&lt;/td&gt;
+      &lt;td&gt;7566829&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;176&lt;/th&gt;
+      &lt;td&gt;464&lt;/td&gt;
+      &lt;td&gt;As We Sleep&lt;/td&gt;
+      &lt;td&gt;38&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;316865&lt;/td&gt;
+      &lt;td&gt;10429398&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;177&lt;/th&gt;
+      &lt;td&gt;1078&lt;/td&gt;
+      &lt;td&gt;Asa Branca&lt;/td&gt;
+      &lt;td&gt;85&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Humberto Teixeira/Luiz Gonzaga&lt;/td&gt;
+      &lt;td&gt;217051&lt;/td&gt;
+      &lt;td&gt;7387183&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;178&lt;/th&gt;
+      &lt;td&gt;984&lt;/td&gt;
+      &lt;td&gt;Asas&lt;/td&gt;
+      &lt;td&gt;78&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;231915&lt;/td&gt;
+      &lt;td&gt;7711669&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;179&lt;/th&gt;
+      &lt;td&gt;2616&lt;/td&gt;
+      &lt;td&gt;Ashes And Ghosts&lt;/td&gt;
+      &lt;td&gt;212&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Billy Duffy/Bob Rock/Ian Astbury&lt;/td&gt;
+      &lt;td&gt;300591&lt;/td&gt;
+      &lt;td&gt;9787692&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;180&lt;/th&gt;
+      &lt;td&gt;929&lt;/td&gt;
+      &lt;td&gt;Ashes To Ashes&lt;/td&gt;
+      &lt;td&gt;74&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Bill Gould/Jon Hudson/Mike Bordin/Mike Patton/...&lt;/td&gt;
+      &lt;td&gt;217391&lt;/td&gt;
+      &lt;td&gt;7093746&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;181&lt;/th&gt;
+      &lt;td&gt;1741&lt;/td&gt;
+      &lt;td&gt;Assaltaram A Gramática&lt;/td&gt;
+      &lt;td&gt;143&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;261041&lt;/td&gt;
+      &lt;td&gt;8698959&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;182&lt;/th&gt;
+      &lt;td&gt;1717&lt;/td&gt;
+      &lt;td&gt;Assim Caminha A Humanidade&lt;/td&gt;
+      &lt;td&gt;142&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;210755&lt;/td&gt;
+      &lt;td&gt;6993763&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;183&lt;/th&gt;
+      &lt;td&gt;1080&lt;/td&gt;
+      &lt;td&gt;Assum Preto&lt;/td&gt;
+      &lt;td&gt;85&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Humberto Teixeira/Luiz Gonzaga&lt;/td&gt;
+      &lt;td&gt;199653&lt;/td&gt;
+      &lt;td&gt;6625000&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;184&lt;/th&gt;
+      &lt;td&gt;415&lt;/td&gt;
+      &lt;td&gt;Astronomy&lt;/td&gt;
+      &lt;td&gt;35&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;A.Bouchard/J.Bouchard/S.Pearlman&lt;/td&gt;
+      &lt;td&gt;397531&lt;/td&gt;
+      &lt;td&gt;13065612&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;185&lt;/th&gt;
+      &lt;td&gt;3087&lt;/td&gt;
+      &lt;td&gt;Atomic Punk&lt;/td&gt;
+      &lt;td&gt;244&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Edward Van Halen, Alex Van Halen, Michael Anth...&lt;/td&gt;
+      &lt;td&gt;182073&lt;/td&gt;
+      &lt;td&gt;5908861&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;186&lt;/th&gt;
+      &lt;td&gt;231&lt;/td&gt;
+      &lt;td&gt;Atras Da Porta&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;189675&lt;/td&gt;
+      &lt;td&gt;6132843&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;187&lt;/th&gt;
+      &lt;td&gt;221&lt;/td&gt;
+      &lt;td&gt;Atrás Da Verd-E-Rosa Só Não Vai Quem Já Morreu&lt;/td&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;David Corrêa - Paulinho Carvalho - Carlos Sena...&lt;/td&gt;
+      &lt;td&gt;307252&lt;/td&gt;
+      &lt;td&gt;10364247&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;188&lt;/th&gt;
+      &lt;td&gt;1733&lt;/td&gt;
+      &lt;td&gt;Atrás Do Trio Elétrico&lt;/td&gt;
+      &lt;td&gt;142&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;149080&lt;/td&gt;
+      &lt;td&gt;4917615&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;189&lt;/th&gt;
+      &lt;td&gt;879&lt;/td&gt;
+      &lt;td&gt;Atrás da Porta&lt;/td&gt;
+      &lt;td&gt;71&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;166608&lt;/td&gt;
+      &lt;td&gt;5432518&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;190&lt;/th&gt;
+      &lt;td&gt;1872&lt;/td&gt;
+      &lt;td&gt;Attitude&lt;/td&gt;
+      &lt;td&gt;153&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Hetfield, Ulrich&lt;/td&gt;
+      &lt;td&gt;315898&lt;/td&gt;
+      &lt;td&gt;10335734&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;191&lt;/th&gt;
+      &lt;td&gt;2755&lt;/td&gt;
+      &lt;td&gt;Até Que Enfim Encontrei Você&lt;/td&gt;
+      &lt;td&gt;222&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Tim Maia&lt;/td&gt;
+      &lt;td&gt;105064&lt;/td&gt;
+      &lt;td&gt;3477751&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;192&lt;/th&gt;
+      &lt;td&gt;2500&lt;/td&gt;
+      &lt;td&gt;Ava Adore&lt;/td&gt;
+      &lt;td&gt;202&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Billy Corgan&lt;/td&gt;
+      &lt;td&gt;261433&lt;/td&gt;
+      &lt;td&gt;8590412&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;193&lt;/th&gt;
+      &lt;td&gt;3416&lt;/td&gt;
+      &lt;td&gt;Ave Maria&lt;/td&gt;
+      &lt;td&gt;285&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;24&lt;/td&gt;
+      &lt;td&gt;Franz Schubert&lt;/td&gt;
+      &lt;td&gt;338243&lt;/td&gt;
+      &lt;td&gt;5605648&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;194&lt;/th&gt;
+      &lt;td&gt;982&lt;/td&gt;
+      &lt;td&gt;Avisa&lt;/td&gt;
+      &lt;td&gt;78&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;355030&lt;/td&gt;
+      &lt;td&gt;11844320&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;195&lt;/th&gt;
+      &lt;td&gt;1721&lt;/td&gt;
+      &lt;td&gt;Aviso Aos Navegantes&lt;/td&gt;
+      &lt;td&gt;143&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;242808&lt;/td&gt;
+      &lt;td&gt;8058651&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;196&lt;/th&gt;
+      &lt;td&gt;871&lt;/td&gt;
+      &lt;td&gt;Azul&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Djavan&lt;/td&gt;
+      &lt;td&gt;253962&lt;/td&gt;
+      &lt;td&gt;8381029&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;197&lt;/th&gt;
+      &lt;td&gt;2753&lt;/td&gt;
+      &lt;td&gt;Azul Da Cor Do Mar&lt;/td&gt;
+      &lt;td&gt;222&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Tim Maia&lt;/td&gt;
+      &lt;td&gt;197955&lt;/td&gt;
+      &lt;td&gt;6475007&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;198&lt;/th&gt;
+      &lt;td&gt;867&lt;/td&gt;
+      &lt;td&gt;Açai&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Djavan&lt;/td&gt;
+      &lt;td&gt;270968&lt;/td&gt;
+      &lt;td&gt;8893682&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;199 rows × 9 columns&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Later on, I may change my mind and want &lt;code&gt;a_tracks&lt;/code&gt; to only contain the names:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[11]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a_tracks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a_tracks&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;span class="n"&gt;a_tracks&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;A Banda&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;A Bencao E Outros&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;A Benihana Christmas, Pts. 1 &amp;amp; 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;A Carta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;A Castle Full Of Rascals&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;A Cura&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;A Day In the Life&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;A Different Kind Of Blue&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;After altering &lt;code&gt;a_tracks&lt;/code&gt;, I realize that I still need the rest of the info for those tracks for later analysis.  Rather than going back and changing my code or rewriting the query I can simply call my &lt;code&gt;run_query&lt;/code&gt; function, passing in &lt;code&gt;a_tracks_query&lt;/code&gt; as my parameter, and assign it to a new variable.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[12]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a_tracks_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;run_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a_tracks_query&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a_tracks_info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;TrackId&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;AlbumId&lt;/th&gt;
+      &lt;th&gt;MediaTypeId&lt;/th&gt;
+      &lt;th&gt;GenreId&lt;/th&gt;
+      &lt;th&gt;Composer&lt;/th&gt;
+      &lt;th&gt;Milliseconds&lt;/th&gt;
+      &lt;th&gt;Bytes&lt;/th&gt;
+      &lt;th&gt;UnitPrice&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;236&lt;/td&gt;
+      &lt;td&gt;A Banda&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;132493&lt;/td&gt;
+      &lt;td&gt;4349539&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;3118&lt;/td&gt;
+      &lt;td&gt;A Bencao E Outros&lt;/td&gt;
+      &lt;td&gt;247&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;421093&lt;/td&gt;
+      &lt;td&gt;14234427&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;3209&lt;/td&gt;
+      &lt;td&gt;A Benihana Christmas, Pts. 1 &amp;amp; 2&lt;/td&gt;
+      &lt;td&gt;251&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;2519436&lt;/td&gt;
+      &lt;td&gt;515301752&lt;/td&gt;
+      &lt;td&gt;1.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;873&lt;/td&gt;
+      &lt;td&gt;A Carta&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Djavan - Gabriel, O Pensador&lt;/td&gt;
+      &lt;td&gt;347297&lt;/td&gt;
+      &lt;td&gt;11493463&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;793&lt;/td&gt;
+      &lt;td&gt;A Castle Full Of Rascals&lt;/td&gt;
+      &lt;td&gt;63&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Ian Gillan, Roger Glover, Jon Lord, Steve Mors...&lt;/td&gt;
+      &lt;td&gt;311693&lt;/td&gt;
+      &lt;td&gt;10159566&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;298&lt;/td&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+      &lt;td&gt;26&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Bernardo Vilhena/Da Gama/Lazão&lt;/td&gt;
+      &lt;td&gt;231392&lt;/td&gt;
+      &lt;td&gt;7663348&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;311&lt;/td&gt;
+      &lt;td&gt;A Cor Do Sol&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Bernardo Vilhena/Da Gama/Lazao&lt;/td&gt;
+      &lt;td&gt;273031&lt;/td&gt;
+      &lt;td&gt;9142937&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;1731&lt;/td&gt;
+      &lt;td&gt;A Cura&lt;/td&gt;
+      &lt;td&gt;142&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;280920&lt;/td&gt;
+      &lt;td&gt;9260588&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;2833&lt;/td&gt;
+      &lt;td&gt;A Day In the Life&lt;/td&gt;
+      &lt;td&gt;227&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;2620245&lt;/td&gt;
+      &lt;td&gt;462818231&lt;/td&gt;
+      &lt;td&gt;1.99&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;2129&lt;/td&gt;
+      &lt;td&gt;A Different Kind Of Blue&lt;/td&gt;
+      &lt;td&gt;176&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Brian Eno, Bono, Adam Clayton, The Edge &amp;amp; Larr...&lt;/td&gt;
+      &lt;td&gt;120816&lt;/td&gt;
+      &lt;td&gt;3884133&lt;/td&gt;
+      &lt;td&gt;0.99&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Although this is a very basic example, it is easy to see how querying a SQLite database in this way can add flexibility and cohesion to your Python project.&lt;/p&gt;
+&lt;p&gt;For a more complete illustration feel free to check out &lt;a href="https://github.com/aedwardg/Codecademy-Projects/tree/master/Twitch_SQL_and_viz"&gt;this visualization notebook&lt;/a&gt; I made back when I was working through Codecademy's Data Visualization course.  In it, I chose to combine the SQL and visualization portions of the project into a single Jupyter Notebook using the exact techniques discussed here.  The database used for that project contained sample data from the Twitch data science team, consisting of roughly 60,000 rows of data.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="3.-Visual-Studio-Code:-The-perfect-middle-ground?"&gt;3. Visual Studio Code: The perfect middle ground?&lt;a class="anchor-link" href="#3.-Visual-Studio-Code:-The-perfect-middle-ground?"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_vscode.png" alt="SQLite in VS Code"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Despite the usefulness of Jupyter for exploring SQLite databases, more often than not my projects don't require both Python and SQL.  As such, my go-to method for exploring SQLite databases is actually through none other than Visual Studio Code.&lt;/p&gt;
+&lt;p&gt;I already use VS Code as my primary code editor, in large part because of the sheer number of quality extensions that are available for it.  One of the extensions that I use regularly is the &lt;a href="https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite&amp;amp;ssr=false"&gt;SQLite extension by alexcvzz&lt;/a&gt;, which provides what I find to be an excellent and intuitive SQLite interface.&lt;/p&gt;
+&lt;p&gt;Another benefit of using VS Code is that your SQL queries and output will match your chosen color theme.  In this regard, VS Code provides the most customizable experience that I've found for local SQLite usage.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_vscode_colors.gif" alt="SQLite VS Code Color GIF"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="Using-SQLite-with-VS-Code"&gt;Using SQLite with VS Code&lt;a class="anchor-link" href="#Using-SQLite-with-VS-Code"&gt;&amp;#182;&lt;/a&gt;&lt;/h4&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;To get started, first make sure &lt;a href="https://code.visualstudio.com/download"&gt;VS Code&lt;/a&gt; is installed on your computer.  Once it is, open it up and go to the Extensions sidebar.  On Windows, the keyboard shortcut for this is &lt;code&gt;Ctrl + Shift + X&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In the extensions search field, type &lt;code&gt;sqlite&lt;/code&gt; and you will see the results containing VS Code extensions for SQLite.  It should look something like this:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_ext.png" alt="SQLite Extension"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;From here, simply click &lt;code&gt;Install&lt;/code&gt; on the extension called &lt;code&gt;SQLite&lt;/code&gt; by axexcvzz.  You can always add a different extension later, but &lt;code&gt;SQLite&lt;/code&gt; is more than enough for my needs and is very easy to use.&lt;/p&gt;
+&lt;p&gt;With the &lt;code&gt;SQLite&lt;/code&gt; extension installed, you can start using it by opening the Command Palette (&lt;code&gt;View &amp;gt; Command Palette&lt;/code&gt; or &lt;code&gt;Ctrl + Shift + P&lt;/code&gt; on Windows) and typing &lt;code&gt;sqlite&lt;/code&gt;.  From here you can see all of the available SQLite actions:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_ext2.png" alt="SQLite Extension Commands"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Let's say you want to open up the &lt;code&gt;chinook.db&lt;/code&gt; database and query it.  To do this, click on &lt;code&gt;Open Database&lt;/code&gt; in the Command Palette and select the database file.  This will add a new collapsible section to your Explorer sidebar called SQLite Explorer, where you can click through to see the schema of your database and tables.  If you want to look through a table's contents, just click on the play button icon to the right of the table name to view the entire table.  This is the equivalent of querying &lt;code&gt;SELECT * FROM table_name;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_ext3.png" alt="SQLite Extension Explorer"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If you want to type your own queries, there are a couple of ways you can go about it.  One way is to click the &lt;code&gt;New Query&lt;/code&gt; button to the right of the database name.  This will open up a new file where you can type as many queries as you like, and VS Code will automatically know that you are querying that database. In this example, we just have the one database open: &lt;code&gt;chinook.db&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To run all queries in the file, open the Command Palette and select &lt;code&gt;SQLite: Run Query&lt;/code&gt; (&lt;code&gt;Ctrl + Shift + Q&lt;/code&gt; on Windows).  Alternatively, if you only want to run a particular query from your file, you can highlight it and select &lt;code&gt;SQLite: Run Selected Query&lt;/code&gt; from the Command Palette.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_ext4.png" alt="SQLite Extension New Query"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;You can also create a new &lt;code&gt;.sql&lt;/code&gt; file, or open an existing one, and query from that file.  However, if you do this VS Code will not automatically assume that you are trying to query from the database you have opened in the SQLite Explorer sidebar.  When you go to run your query for the first time, you will be prompted to choose either the in-memory database or to choose a database file:
+&lt;br&gt;
+&lt;br&gt;
+&lt;img src="images/sqlite_ext6.png"/&gt;
+&lt;br&gt;
+&lt;br&gt;
+Once you have selected the database file (in this example &lt;code&gt;chinook.db&lt;/code&gt;), queries are run exactly the same as if you were using the file generated by the &lt;code&gt;New Query&lt;/code&gt; button.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_ext7.png" alt="SQLite Extension Query From File"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;As you can see, VS Code can be a powerful and flexible tool for exploring SQLite databases once it is set up correctly.  Although I didn't cover them here, there are even more features of the &lt;code&gt;SQLite&lt;/code&gt; extension, including exporting your query results as HTML, JSON or CSV.  I highly encourage anyone who is interested to give it a try and see whether it fits into your arsenal of SQL exploration tools.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="4.-DB-Browser-for-SQLite:-The-powerful-and-beginner-freindly-GUI"&gt;4. DB Browser for SQLite: The powerful &lt;em&gt;and&lt;/em&gt; beginner-freindly GUI&lt;a class="anchor-link" href="#4.-DB-Browser-for-SQLite:-The-powerful-and-beginner-freindly-GUI"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_homepage.png" alt="DB4S Homepage"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Finally, we come to DB Browser for SQLite.  Of the four methods I've discussed thus far, this is the one with which I have the least experience.  Until recently I didn't even consider using a GUI app for SQLite.  However, after hearing a lot of good things about it I finally downloaded DB Browser for SQLite (DB4S) and took it for a spin.  Much to my surprise, I discovered a tool that was both powerful and easy to use.  In fact, I would go so far as to recommend it to both beginners and seasoned professionals due to the fact that the user can make it as easy or as complicated as they want.  Although I don't see myself &lt;em&gt;needing&lt;/em&gt; it for any SQLite tasks in the near future, I look forward to incorporating it into my workflow more often &amp;mdash; particularly when I want to take a quick look through a larger database with multiple tables.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="Using-DB4S"&gt;Using DB4S&lt;a class="anchor-link" href="#Using-DB4S"&gt;&amp;#182;&lt;/a&gt;&lt;/h4&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Installing DB4S is easy.  Simply head on over to the &lt;a href="https://sqlitebrowser.org/dl/"&gt;download page&lt;/a&gt; and follow the instructions for your operating system.  If you are a Dark Mode fiend like me, consider downloading the &lt;a href="https://sqlitebrowser.org/blog/first-alpha-release-for-3-12-0/"&gt;alpha release&lt;/a&gt; for version 3.12.0.  As of this writing, it is the only version that supports a working dark theme for Windows and Mac OS (Dark Mode has been supported on Linux since version 3.11.1).  If you decide to go with a version that supports Dark Mode, this can be selected in &lt;code&gt;Edit &amp;gt; Preferences &amp;gt; Application style&lt;/code&gt;.  You can also customize the font, color and size of your SQL queries under the &lt;code&gt;SQL&lt;/code&gt; tab in &lt;code&gt;Preferences&lt;/code&gt;, though I find the defaults look nice in both the dark and default modes.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_colors.png" alt="DB4S Customization"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;With DB4S installed, opening a database file is as simple as clicking the &lt;code&gt;Open Database&lt;/code&gt; button near the top of the screen and selecting the file you want to open.  One of the greatest things about DB4S is that although you don't need to be familiar with SQL commands to use it, it will show you the SQL code for every command the program uses to display data to the user.&lt;/p&gt;
+&lt;p&gt;For example, just by opening &lt;code&gt;chinook.db&lt;/code&gt;, we are presented with an interactive &lt;code&gt;Database Structure&lt;/code&gt; menu, along with the &lt;code&gt;SQL Log&lt;/code&gt; on the right hand side.  The &lt;code&gt;SQL Log&lt;/code&gt; shows the &lt;code&gt;PRAGMA&lt;/code&gt; functions and &lt;code&gt;SELECT&lt;/code&gt; statement the app called on our database to display this info.  Thus, beginners get the convenience using the expandable menu, while also being exposed to the commands used under the hood.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_structure.png" alt="DB4S Database Structure and Log"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Moving over to the &lt;code&gt;Browse Data&lt;/code&gt; tab, we see that a few more commands get added to the &lt;code&gt;SQL Log&lt;/code&gt; each time a table is selected from the dropdown menu.  If you aren't super comfortable writing SQL queries by hand, the &lt;code&gt;Database Structure&lt;/code&gt; and &lt;code&gt;Browse Data&lt;/code&gt; tabs are likely where you are going to be spending most of your time.  However, even for those of us who have plenty of SQL practice under our belts, the &lt;code&gt;Browse Data&lt;/code&gt; view includes several cool features for quickly filtering the data.&lt;/p&gt;
+&lt;p&gt;For instance, clicking on any of a table's column names instantly sorts the data by that column, in ascending order (click one more time for descending order).  Combine this with the &lt;code&gt;Filter&lt;/code&gt; field under each column name and you can blaze through what might otherwise turn into complicated queries.  In the screenshot below I achieved the equivalent of this query...&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;SELECT * 
+FROM tracks
+WHERE 
+  Name LIKE 'M%' AND
+  Composer LIKE 'C%' AND
+  Milliseconds &gt; 100000 AND
+  GenreId LIKE '%7%'
+ORDER BY Name ASC;
+&lt;/code&gt;&lt;/pre&gt;
+...with a couple of clicks and 12 keystrokes.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_filter.png" alt="DB4S Browse Data Filters"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Point-and-click features aside, DB Browser for SQLite makes it easy to query your database manually, either by typing your queries on the fly or by opening a SQL file where you've already prepared and saved your queries.  To utilize either of these options, merely navigate over to the &lt;code&gt;Execute SQL&lt;/code&gt; tab.&lt;/p&gt;
+&lt;p&gt;Since I already had a bunch of queries saved in a file called &lt;code&gt;sample.sql&lt;/code&gt;, I can open that file and hit the &lt;code&gt;Execute&lt;/code&gt; button (or &lt;code&gt;Ctrl + Enter&lt;/code&gt;, &lt;code&gt;F5&lt;/code&gt; or &lt;code&gt;Ctrl + R&lt;/code&gt; on Windows).  This will execute all queries in the file or whichever query I have highlighted. However, it is important to note that the output section of the app will only display the results for the most recent query that you have run.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_execute.png" alt="DB4S Execute SQL"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;As mentioned earlier, DB4S can become as complex as you want it to, and there are dozens of features that can't be covered in this post but are worth checking out.  For example, the &lt;code&gt;Plot&lt;/code&gt; feature (seen in the image at the top of the post) might really interest some readers.  Others might be more intrigued by the ability to edit Pragmas at the touch of a button.  Either way, so long as its developers stay true to the simple-yet-powerful design that it currently embodies, I'll continue to recommend DB Browser for SQLite as an excellent addition to any SQLite toolkit.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content><category term="Posts"></category><category term="SQL"></category><category term="SQLite"></category><category term="Data Science"></category></entry><entry><title>Using SQLite at Home Pt 1: CLI</title><link href="https://aedwardg.github.io/sqlite-at-home-1.html" rel="alternate"></link><published>2020-04-14T15:00:00-07:00</published><updated>2020-04-14T15:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-04-14:/sqlite-at-home-1.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://aedwardg.github.io/images/sqlite_main.png" alt="Example SQLite CLI"&gt;&lt;/p&gt;
@@ -300,10 +2422,9 @@ New-Item -ItemType File -Path $PROFILE -Force
 doskey sqlite3=YOUR_PATH_HERE\sqlite3.exe&lt;/code&gt;&lt;/pre&gt; replacing &lt;code&gt;YOUR_PATH_HERE&lt;/code&gt; with the path to your SQLite executable file.&lt;/li&gt;
 &lt;li&gt;Save this file with a file extension of &lt;code&gt;.cmd&lt;/code&gt;.  For example, you could save it as &lt;code&gt;aliases.cmd&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Go to the search bar next to your start menu, type &lt;code&gt;cmd&lt;/code&gt;, and select &lt;code&gt;Open File Location&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Right-click on &lt;code&gt;Command Prompt.exe&lt;/code&gt; and open the Properties.  It should look like this: &lt;img src="images/cmd_properties.png"&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Under the &lt;code&gt;Shortcut&lt;/code&gt; tab, you should see a field called &lt;code&gt;Target&lt;/code&gt; that contains the path of the &lt;code&gt;cmd.exe&lt;/code&gt; executable.  Inside of that field, after the &lt;code&gt;cmd.exe&lt;/code&gt; path, type &lt;code&gt;/k&lt;/code&gt; followed by the path the batch file you just created, in quotes, as seen in the above screenshot.&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Right-click on &lt;code&gt;Command Prompt.exe&lt;/code&gt; and open the Properties.  It should look like this: &lt;img src="images/cmd_properties.png"&gt;
+&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Under the &lt;code&gt;Shortcut&lt;/code&gt; tab, you should see a field called &lt;code&gt;Target&lt;/code&gt; that contains the path of the &lt;code&gt;cmd.exe&lt;/code&gt; executable.  Inside of that field, after the &lt;code&gt;cmd.exe&lt;/code&gt; path, type &lt;code&gt;/k&lt;/code&gt; followed by the path the batch file you just created, in quotes, as seen in the above screenshot.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
