@@ -29,14 +29,6 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1&gt;Using SQLite At Home &amp;mdash; Part 2: Better alternatives for  data exploration&lt;/h1&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In my previous post, &lt;a href="https://aedwardg.github.io/sqlite-at-home-1.html"&gt;Part 1: CLI&lt;/a&gt;, I covered installing SQLite and setting it up for use on the command line.  However, as I mentioned in that post, the command line is only one of the four ways I tend to interact with SQLite on my own computer &amp;mdash; and it is the option I am least likely to go for if I need to take a close look at a dataset.  In fact, I really only use the SQLite CLI if I am creating a database/table or if I am using it in a program or app.  If my task involves data exploration to any degree, I find the CLI less efficient and frankly, less visually appealing.  In this post I'll dive into the other three methods I use to interact with SQLite locally and why I believe they are more intuitive to use, easier on the eyes and provide better workflow integration than the command line.&lt;/p&gt;
 &lt;p&gt;To skip directly to a specific section click the link below:&lt;/p&gt;
 &lt;ol&gt;
@@ -2085,7 +2077,7 @@ ORDER BY Name ASC;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;As mentioned earlier, DB4S can become as complex as you want it to, and there are dozens of features that can't be covered in this post but are worth checking out.  For example, the &lt;code&gt;Plot&lt;/code&gt; feature (seen in the image at the top of the post) might really interest some readers.  Others might be more intrigued by the ability to edit Pragmas at the touch of a button.  Either way, so long as its developers stay true to the simple-yet-powerful design that it currently embodies, I'll continue to recommend DB Browser for SQLite as an excellent addition to any SQLite toolkit.&lt;/p&gt;
+&lt;p&gt;As mentioned earlier, DB4S can become as complex as you want it to, and there are dozens of features that can't be covered in this post but are worth checking out.  For example, the &lt;code&gt;Plot&lt;/code&gt; feature (seen in the image at the &lt;a href="https://aedwardg.github.io/sqlite-at-home-2.html#"&gt;top of the post&lt;/a&gt;) might really interest some readers.  Others might be more intrigued by the ability to edit Pragmas at the touch of a button.  Either way, so long as its developers stay true to the simple-yet-powerful design that it currently embodies, I'll continue to recommend DB Browser for SQLite as an excellent addition to any SQLite toolkit.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
