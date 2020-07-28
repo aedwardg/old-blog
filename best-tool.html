@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Using the Best Tool for the Job - Anthony's Data Blog</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="https://aedwardg.github.io/images/favicon-16x16.png" rel="icon">
+
+<link rel="canonical" href="https://aedwardg.github.io/best-tool.html">
+
+        <meta name="author" content="Anthony Garcia" />
+        <meta name="keywords" content="SQL,SQLite,Python,Automation" />
+        <meta name="description" content="Often as programmers we have a go-to language or library that we want to use for every problem. This is especially true of Data Analysts and Data Scientists whose backgrounds may not be in Computer Science. In fact, I&#39;ll be the first to admit I wish everything could be done …" />
+
+        <meta property="og:site_name" content="Anthony's Data Blog" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Using the Best Tool for the Job"/>
+        <meta property="og:url" content="https://aedwardg.github.io/best-tool.html"/>
+        <meta property="og:description" content="Often as programmers we have a go-to language or library that we want to use for every problem. This is especially true of Data Analysts and Data Scientists whose backgrounds may not be in Computer Science. In fact, I&#39;ll be the first to admit I wish everything could be done …"/>
+        <meta property="article:published_time" content="2020-07-26" />
+            <meta property="article:section" content="Posts" />
+            <meta property="article:tag" content="SQL" />
+            <meta property="article:tag" content="SQLite" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="Automation" />
+            <meta property="article:author" content="Anthony Garcia" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://aedwardg.github.io/theme/css/bootstrap.darkly.min.css" type="text/css"/>
+    <link href="https://aedwardg.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://aedwardg.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://aedwardg.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="https://aedwardg.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Anthony's Data Blog ATOM Feed"/>
+
+        <link href="https://aedwardg.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Anthony's Data Blog Posts ATOM Feed"/>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://aedwardg.github.io/" class="navbar-brand">
+Anthony's Data Blog            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://aedwardg.github.io/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="https://aedwardg.github.io/category/posts.html">Posts</a>
+                        </li>
+                        <li >
+                            <a href="https://aedwardg.github.io/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://aedwardg.github.io/best-tool.html"
+                       rel="bookmark"
+                       title="Permalink to Using the Best Tool for the Job">
+                        Using the Best Tool for the Job
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-07-26T15:00:00-07:00"> Sun 26 July 2020</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://aedwardg.github.io/tag/sql.html">SQL</a>
+        /
+	<a href="https://aedwardg.github.io/tag/sqlite.html">SQLite</a>
+        /
+	<a href="https://aedwardg.github.io/tag/python.html">Python</a>
+        /
+	<a href="https://aedwardg.github.io/tag/automation.html">Automation</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><img alt="Automation with Bash and SQLite" src="https://aedwardg.github.io/images/bash-auto.jpg"></p>
+<p>Often as programmers we have a go-to language or library that we want to use for every problem. This is especially true of Data Analysts and Data Scientists whose backgrounds may not be in Computer Science. In fact, I'll be the first to admit I wish everything could be done in Python.  However, it's important to remember that no matter how much we like a certain programming language or software, it may not be the best tool for the job.</p>
+<p>For example, just because you love to work with data in Excel, it doesn't mean Excel should be your go-to for multiple linear regression. Is it possible? Absolutely. Are there better tools for this? Absolutely! While this is a fairly obvious example, it's not always so clear cut in the real world.</p>
+<p>Recently, a friend reached out asking for advice on how to optimize his current ETL automation. It was written in Python and (as you can see in his sample code below) performed the following actions:</p>
+<ul>
+<li>looped through a number of (very large) CSV files, and read them using Python's <code>csv.DictReader</code>,</li>
+<li>created a SQLite table for the data using Python's <code>sqlite3</code> module,</li>
+<li>looped through each row of the data, adding it to a list,</li>
+<li>added that list of lists to the database table,</li>
+<li>queried a different table in the database using Python,</li>
+<li>and finally, performed string operations on certain data depending on how it was formatted</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">statename_list</span><span class="p">:</span>
+  <span class="n">full_file_name</span> <span class="o">=</span> <span class="n">state</span> <span class="o">+</span> <span class="s2">&quot;CDIST.csv&quot;</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">full_file_name</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./full/unzipped/&quot;</span> <span class="o">+</span> <span class="n">full_file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">code_file</span><span class="p">:</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DROP TABLE IF EXISTS cur_state&#39;</span><span class="p">)</span>
+
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">      TABLE cur_state (</span>
+<span class="s1">        full_zip TEXT,</span>
+<span class="s1">        city TEXT,</span>
+<span class="s1">        city_fips TEXT,</span>
+<span class="s1">        county TEXT,</span>
+<span class="s1">        county_fips TEXT,</span>
+<span class="s1">        state TEXT,</span>
+<span class="s1">        state_fips TEXT,</span>
+<span class="s1">        cong_district TEXT</span>
+<span class="s1">      )</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">read_csv_data</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">code_file</span><span class="p">)</span>
+
+
+    <span class="n">to_db</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">read_csv_data</span><span class="p">:</span>
+      <span class="n">to_db</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;ZIP+4&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;City Name&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;City Place FIPS&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;County Name&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;County FIPS&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;State Code&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;State FIPS&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;Congressional District&#39;</span><span class="p">])]</span>
+
+       <span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s1">&#39;INSERT INTO cur_state (full_zip,city,city_fips,county,county_fips,state,state_fips,cong_district) VALUES (?,?,?,?,?,?,?,?);&#39;</span><span class="p">,</span> <span class="n">to_db</span><span class="p">)</span>
+
+
+        <span class="n">members_in_state</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM t WHERE State = ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">state</span><span class="p">,))</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">members_in_state</span><span class="p">:</span>
+          <span class="n">num_results</span> <span class="o">+=</span> <span class="mi">1</span>
+
+          <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">14</span><span class="p">])</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">13</span><span class="p">])</span>
+          <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">split_string</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+            <span class="n">fixed_full_9</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split_string</span><span class="p">)</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">fixed_full_9</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span>
+
+
+          <span class="n">result</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM cur_state WHERE full_zip = ?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">fixed_full_9</span><span class="p">,))</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+
+<span class="c1"># CONCLUSION: This does go through all 1000 results</span>
+
+<span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Despite Python being one of the best languages for automation, in this particular case Python was not ideal for performing all the ETL actions from beginning to end. For starters, each CSV file had over 1 million rows of data. Even though <code>csv.DictReader</code> is <a href="https://medium.com/casual-inference/the-most-time-efficient-ways-to-import-csv-data-in-python-cc159b44063d">blazingly fast</a> at reading in data, the rest of his code took nearly a minute to complete <em>per file</em> as it had to loop through millions of dictionaries and add them to lists before inserting them into the database and performing queries.</p>
+<p>Now, we could have spent a good amount of time trying to improve and optimize his existing Python code. But why, when at least half of his code could be replaced entirely by SQLite?  For those of you who don't know, SQLite is one of the fastest Relational Database Management Systems (RDBMSs) when it comes to single-user access. It is written in C and is server-less, so nothing has to be transferred over a network. Most importantly, however, the SQLite command-line interface (CLI) supports reading a CSV directly to a table &mdash; something that Python's <code>sqlite3</code> module can't do.</p>
+<p>What does this mean in terms of efficiency?  It means that if we could figure out a way to automate the SQLite CLI, most of the work could be done with the speed of C, while simultaneously cutting out the step that looped through the <code>DictReader</code> output line by line. Once each CSV was converted into a database table, SQL queries could be performed as needed and Python could do the rest.</p>
+<p>In the end, my solution was to write a bash script to loop through each CSV and load it directly in into SQLite as a table, perform various queries, and then call a python script to finish the remaining processes. This improved execution time from roughly one minute per CSV to around 3 to 6 <em>seconds</em> per CSV, depending on the file size and how many actions were performed on the data.  Absent any Python, the SQL processes averaged ~1.8 seconds per file.</p>
+<p>Coming full circle, we see that software and programming languages are nothing more than tools at our disposal. As such, it's important that we recognize their strengths and weaknesses accordingly.  Just as a carpenter wouldn't use a hammer for every job, neither should we limit ourselves to our favorite digital tools if we have the knowledge and skills to do otherwise. And for God's sake, stop trying to avoid SQL; it may not be the most exciting code in the world, but it can make your life a whole lot easier.</p>
+<hr>
+<h2>Example Code</h2>
+<p>Though I can't provide his company's exact data here, if you're interested in trying this out on your own you can practice by downloading the Kaggle National Baby Names dataset <a href="https://www.kaggle.com/kaggle/us-baby-names?select=NationalNames.csv">here</a>.  This CSV is about 41 MB, with nearly 2 million rows of data. You will need a Unix operating system (Mac or Linux), or WSL on Windows to run the following script, and if you don't already have <code>sqlite3</code> installed, follow the Mac or Linux instructions <a href="https://www.codecademy.com/articles/what-is-sqlite">here</a> to do so.</p>
+<p>Save the <code>NationalNames.csv</code> in a folder on your computer, along with the following code as a <code>.sh</code> file (I called mine <code>load.sh</code>):</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="k">for</span> f in *.csv
+<span class="k">do</span>
+sqlite3 <span class="s">&lt;&lt;EOF</span>
+<span class="s">.open Names.db</span>
+<span class="s">.mode csv</span>
+<span class="s">.import ./$f ${f%%.*}</span>
+<span class="s">CREATE TABLE ${f%%.*}_girl_names AS </span>
+<span class="s">SELECT COUNT(Id) AS count</span>
+<span class="s">FROM ${f%%.*}</span>
+<span class="s">WHERE Gender = &#39;F&#39;;</span>
+<span class="s">.quit</span>
+<span class="s">EOF</span>
+<span class="k">done</span>
+<span class="c1"># run python script here (e.g., python script.py)</span>
+</pre></div>
+
+
+<p>Now, use the terminal to navigate to your folder and run the following command (replace the word "load" with the name you gave the file, if you didn't name it <code>load.sh</code>):</p>
+<p><code>time ./load.sh</code></p>
+<p>If you look in your newly created SQLite database, <code>Names.db</code>, you will see two different tables: one containing all baby names and the other with all the female baby names at 1.8 million and 1 million rows, respectively.  If you'd rather time how fast this simple script can iterate over several CSV files of this size, copy and paste <code>NationalNames</code> a few times in the same folder and give each copy a different name (with no spaces). Then, run the same command given above and prepare to be amazed at just how painless automation with SQLite can be.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Sites</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.anthonysdata.com"><i class="fa fa-home fa-lg"></i> anthonysdata.com</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/anthony-g-971ba064/"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://public.tableau.com/profile/anthony.garcia5831#!/"><i class="fa fa-tableau-square fa-lg"></i> Tableau Public</a></li>
+    <li class="list-group-item"><a href="https://github.com/aedwardg"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+    <li class="list-group-item"><a href="https://medium.com/"><i class="fa fa-medium fa-lg"></i> Medium</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Technologies</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://seaborn.pydata.org/" target="_blank">Seaborn</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://pandas.pydata.org/" target="_blank">Pandas</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://numpy.org/" target="_blank">Numpy</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.scipy.org/" target="_blank">SciPy</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://pingouin-stats.org/" target="_blank">Pingouin</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://kivy.org/#home" target="_blank">Kivy</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://github.com/HeaTTheatR/KivyMD" target="_blank">KivyMD</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.sqlite.org/fileformat2.html" target="_blank">SQLite</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.mysql.com/" target="_blank">MySQL</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://julialang.org/" target="_blank">Julia</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://swift.org/" target="_blank">Swift</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 Anthony Garcia
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://aedwardg.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://aedwardg.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://aedwardg.github.io/theme/js/respond.min.js"></script>
+
+
+    <script src="https://aedwardg.github.io/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

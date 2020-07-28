@@ -1,5 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-05-19T01:00:00-07:00</updated><entry><title>Using SQLite at Home Pt 2: Better alternatives for data exploration</title><link href="https://aedwardg.github.io/sqlite-at-home-2.html" rel="alternate"></link><published>2020-05-19T01:00:00-07:00</published><updated>2020-05-19T01:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-05-19:/sqlite-at-home-2.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anthony's Data Blog - Posts</title><link href="https://aedwardg.github.io/" rel="alternate"></link><link href="https://aedwardg.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://aedwardg.github.io/</id><updated>2020-07-26T15:00:00-07:00</updated><entry><title>Using the Best Tool for the Job</title><link href="https://aedwardg.github.io/best-tool.html" rel="alternate"></link><published>2020-07-26T15:00:00-07:00</published><updated>2020-07-26T15:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-07-26:/best-tool.html</id><summary type="html">&lt;p&gt;&lt;img alt="Automation with Bash and SQLite" src="https://aedwardg.github.io/images/bash-auto.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Often as programmers we have a go-to language or library that we want to use for every problem. This is especially true of Data Analysts and Data Scientists whose backgrounds may not be in Computer Science. In fact, I'll be the first to admit I wish everything could be done …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Automation with Bash and SQLite" src="https://aedwardg.github.io/images/bash-auto.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Often as programmers we have a go-to language or library that we want to use for every problem. This is especially true of Data Analysts and Data Scientists whose backgrounds may not be in Computer Science. In fact, I'll be the first to admit I wish everything could be done in Python.  However, it's important to remember that no matter how much we like a certain programming language or software, it may not be the best tool for the job.&lt;/p&gt;
+&lt;p&gt;For example, just because you love to work with data in Excel, it doesn't mean Excel should be your go-to for multiple linear regression. Is it possible? Absolutely. Are there better tools for this? Absolutely! While this is a fairly obvious example, it's not always so clear cut in the real world.&lt;/p&gt;
+&lt;p&gt;Recently, a friend reached out asking for advice on how to optimize his current ETL automation. It was written in Python and (as you can see in his sample code below) performed the following actions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;looped through a number of (very large) CSV files, and read them using Python's &lt;code&gt;csv.DictReader&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;created a SQLite table for the data using Python's &lt;code&gt;sqlite3&lt;/code&gt; module,&lt;/li&gt;
+&lt;li&gt;looped through each row of the data, adding it to a list,&lt;/li&gt;
+&lt;li&gt;added that list of lists to the database table,&lt;/li&gt;
+&lt;li&gt;queried a different table in the database using Python,&lt;/li&gt;
+&lt;li&gt;and finally, performed string operations on certain data depending on how it was formatted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;statename_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;full_file_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;CDIST.csv&amp;quot;&lt;/span&gt;
+
+  &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_file_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;./full/unzipped/&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;full_file_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;code_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DROP TABLE IF EXISTS cur_state&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="s1"&gt;      TABLE cur_state (&lt;/span&gt;
+&lt;span class="s1"&gt;        full_zip TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        city TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        city_fips TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        county TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        county_fips TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        state TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        state_fips TEXT,&lt;/span&gt;
+&lt;span class="s1"&gt;        cong_district TEXT&lt;/span&gt;
+&lt;span class="s1"&gt;      )&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;read_csv_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DictReader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;code_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+    &lt;span class="n"&gt;to_db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;read_csv_data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;to_db&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ZIP+4&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;City Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;City Place FIPS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;County Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;County FIPS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;State Code&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;State FIPS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Congressional District&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])]&lt;/span&gt;
+
+       &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executemany&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;INSERT INTO cur_state (full_zip,city,city_fips,county,county_fips,state,state_fips,cong_district) VALUES (?,?,?,?,?,?,?,?);&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;to_db&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+        &lt;span class="n"&gt;members_in_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SELECT * FROM t WHERE State = ?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;members_in_state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+          &lt;span class="n"&gt;num_results&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+          &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+          &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;split_string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;fixed_full_9&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;split_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+          &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;fixed_full_9&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+
+          &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SELECT * FROM cur_state WHERE full_zip = ?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fixed_full_9&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchone&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# CONCLUSION: This does go through all 1000 results&lt;/span&gt;
+
+&lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Despite Python being one of the best languages for automation, in this particular case Python was not ideal for performing all the ETL actions from beginning to end. For starters, each CSV file had over 1 million rows of data. Even though &lt;code&gt;csv.DictReader&lt;/code&gt; is &lt;a href="https://medium.com/casual-inference/the-most-time-efficient-ways-to-import-csv-data-in-python-cc159b44063d"&gt;blazingly fast&lt;/a&gt; at reading in data, the rest of his code took nearly a minute to complete &lt;em&gt;per file&lt;/em&gt; as it had to loop through millions of dictionaries and add them to lists before inserting them into the database and performing queries.&lt;/p&gt;
+&lt;p&gt;Now, we could have spent a good amount of time trying to improve and optimize his existing Python code. But why, when at least half of his code could be replaced entirely by SQLite?  For those of you who don't know, SQLite is one of the fastest Relational Database Management Systems (RDBMSs) when it comes to single-user access. It is written in C and is server-less, so nothing has to be transferred over a network. Most importantly, however, the SQLite command-line interface (CLI) supports reading a CSV directly to a table &amp;mdash; something that Python's &lt;code&gt;sqlite3&lt;/code&gt; module can't do.&lt;/p&gt;
+&lt;p&gt;What does this mean in terms of efficiency?  It means that if we could figure out a way to automate the SQLite CLI, most of the work could be done with the speed of C, while simultaneously cutting out the step that looped through the &lt;code&gt;DictReader&lt;/code&gt; output line by line. Once each CSV was converted into a database table, SQL queries could be performed as needed and Python could do the rest.&lt;/p&gt;
+&lt;p&gt;In the end, my solution was to write a bash script to loop through each CSV and load it directly in into SQLite as a table, perform various queries, and then call a python script to finish the remaining processes. This improved execution time from roughly one minute per CSV to around 3 to 6 &lt;em&gt;seconds&lt;/em&gt; per CSV, depending on the file size and how many actions were performed on the data.  Absent any Python, the SQL processes averaged ~1.8 seconds per file.&lt;/p&gt;
+&lt;p&gt;Coming full circle, we see that software and programming languages are nothing more than tools at our disposal. As such, it's important that we recognize their strengths and weaknesses accordingly.  Just as a carpenter wouldn't use a hammer for every job, neither should we limit ourselves to our favorite digital tools if we have the knowledge and skills to do otherwise. And for God's sake, stop trying to avoid SQL; it may not be the most exciting code in the world, but it can make your life a whole lot easier.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Example Code&lt;/h2&gt;
+&lt;p&gt;Though I can't provide his company's exact data here, if you're interested in trying this out on your own you can practice by downloading the Kaggle National Baby Names dataset &lt;a href="https://www.kaggle.com/kaggle/us-baby-names?select=NationalNames.csv"&gt;here&lt;/a&gt;.  This CSV is about 41 MB, with nearly 2 million rows of data. You will need a Unix operating system (Mac or Linux), or WSL on Windows to run the following script, and if you don't already have &lt;code&gt;sqlite3&lt;/code&gt; installed, follow the Mac or Linux instructions &lt;a href="https://www.codecademy.com/articles/what-is-sqlite"&gt;here&lt;/a&gt; to do so.&lt;/p&gt;
+&lt;p&gt;Save the &lt;code&gt;NationalNames.csv&lt;/code&gt; in a folder on your computer, along with the following code as a &lt;code&gt;.sh&lt;/code&gt; file (I called mine &lt;code&gt;load.sh&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; f in *.csv
+&lt;span class="k"&gt;do&lt;/span&gt;
+sqlite3 &lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;.open Names.db&lt;/span&gt;
+&lt;span class="s"&gt;.mode csv&lt;/span&gt;
+&lt;span class="s"&gt;.import ./$f ${f%%.*}&lt;/span&gt;
+&lt;span class="s"&gt;CREATE TABLE ${f%%.*}_girl_names AS &lt;/span&gt;
+&lt;span class="s"&gt;SELECT COUNT(Id) AS count&lt;/span&gt;
+&lt;span class="s"&gt;FROM ${f%%.*}&lt;/span&gt;
+&lt;span class="s"&gt;WHERE Gender = &amp;#39;F&amp;#39;;&lt;/span&gt;
+&lt;span class="s"&gt;.quit&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="c1"&gt;# run python script here (e.g., python script.py)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, use the terminal to navigate to your folder and run the following command (replace the word "load" with the name you gave the file, if you didn't name it &lt;code&gt;load.sh&lt;/code&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;time ./load.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If you look in your newly created SQLite database, &lt;code&gt;Names.db&lt;/code&gt;, you will see two different tables: one containing all baby names and the other with all the female baby names at 1.8 million and 1 million rows, respectively.  If you'd rather time how fast this simple script can iterate over several CSV files of this size, copy and paste &lt;code&gt;NationalNames&lt;/code&gt; a few times in the same folder and give each copy a different name (with no spaces). Then, run the same command given above and prepare to be amazed at just how painless automation with SQLite can be.&lt;/p&gt;</content><category term="Posts"></category><category term="SQL"></category><category term="SQLite"></category><category term="Python"></category><category term="Automation"></category></entry><entry><title>Using SQLite at Home Pt 2: Better alternatives for data exploration</title><link href="https://aedwardg.github.io/sqlite-at-home-2.html" rel="alternate"></link><published>2020-05-19T01:00:00-07:00</published><updated>2020-05-19T01:00:00-07:00</updated><author><name>Anthony Garcia</name></author><id>tag:aedwardg.github.io,2020-05-19:/sqlite-at-home-2.html</id><summary type="html">&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://aedwardg.github.io/images/db_browser_plot.png" alt="DB4S Plot"&gt;&lt;/p&gt;
